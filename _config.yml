@@ -1,3 +1,5 @@
 name: Thanh Nguyen
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+sass:
+  style: compressed
