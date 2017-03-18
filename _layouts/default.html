@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>{{ page.title }}</title>
-  <!-- link to main stylesheet -->
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Source+Code+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style media="screen">
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(34, 34, 34, 0.19);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #007cd5;
+    }
+    html, body, .wrapper, .sidebar, .container {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      background-color: #007cd5;
+    }
+    .sidebar > img {
+      width: 200px;
+      margin-left: 50px;
+      margin-top: 50px;
+      border-radius: 100px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .sidebar > p {
+      color: white;
+      text-align: center;
+      font-size: 32px;
+      font-family: 'Source Code Pro', monospace;
+      margin: 0;
+    }
+    .sidebar .menu ul {
+      margin-top: 50px;
+      margin-bottom: 0;
+    }
+    .sidebar .menu ul li {
+      list-style: none;
+      line-height: 50px;
+    }
+    .sidebar .menu ul li a{
+      text-decoration: none;
+      color: white;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 24px;
+    }
+    .container {
+      padding-left: 350px;
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/cv">CV</a></li>
-      <li><a href="/blog">Blog</a></li>
-    </ul>
-  </nav>
-  <div class="container">
-
-    {{ content }}
-
-  </div><!-- /.container -->
-  <footer>
-    <ul>
-      <li><a href="mailto:hankquinlanhub@gmail.com">email</a></li>
-      <li><a href="https://github.com/hankquinlan">github.com/hankquinlan</a></li>
-    </ul>
-  </footer>
+  <div class="wrapper">
+    <div class="sidebar">
+      <img src="https://avatars0.githubusercontent.com/u/26478347?v=3&u=5b57c96c0ad797a179dd6265e095ea49e8c49480&s=400" alt="avatar">
+      <p>@Thanh Nguyen</p>
+      <div class="menu">
+        <ul>
+          <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
+          <li><a href="/"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Blog</a></li>
+          <li><a href="/"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search</a></li>
+          <li><a href="/"><i class="fa fa-code-fork" aria-hidden="true"></i>&nbsp;Project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div style="height: 20px"></div>
+      {{ content }}
+    </div>
+  </div>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </body>
 </html>
