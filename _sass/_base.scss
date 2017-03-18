@@ -54,4 +54,7 @@ html, body, .wrapper, .sidebar, .container {
 }
 footer {
   text-align: center;
+  width: calc(100% - 350px);
+  position: absolute;
+  bottom: 0;
 }
