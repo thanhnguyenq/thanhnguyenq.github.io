@@ -29,7 +29,7 @@ html, body, .wrapper, .sidebar, .container {
     color: white;
     text-align: center;
     font-size: 32px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: $base-font-size;
     margin: 0;
   }
   .menu {
@@ -42,7 +42,7 @@ html, body, .wrapper, .sidebar, .container {
         a {
           text-decoration: none;
           color: white;
-          font-family: 'Source Code Pro', monospace;
+          font-family: $base-font-size;
           font-size: 24px;
         }
       }
@@ -57,4 +57,6 @@ footer {
   width: calc(100% - 350px);
   position: absolute;
   bottom: 0;
+  line-height: 50px;
+  font-family: $base-font-size;
 }
