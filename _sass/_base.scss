@@ -7,7 +7,7 @@
 ::-webkit-scrollbar-thumb {
   background: $base-color;
 }
-html, body, .wrapper, .sidebar, .container {
+html, body, .wrapper, .sidebar {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -57,6 +57,9 @@ html, body, .wrapper, .sidebar, .container {
   padding-left: 400px;
   max-width: 700px;
   line-height: 25px;
+  .content {
+    min-height: calc(100% - 50px);
+  }
   h1, h2, h3, h4, h5, h6, th {
     font-family: $title-font-family;
   }
