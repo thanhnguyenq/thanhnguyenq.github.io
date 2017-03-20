@@ -57,9 +57,9 @@ html, body, .wrapper, .sidebar {
   padding-left: 400px;
   max-width: 700px;
   line-height: 25px;
-  min-height: calc(100% - 50px);
+  height: 100%;
   .content {
-    min-height: calc(100% - 50px);
+    min-height: calc(100% - 100px);
   }
   h1, h2, h3, h4, h5, h6, th {
     font-family: $title-font-family;
