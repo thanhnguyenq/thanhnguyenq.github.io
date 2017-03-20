@@ -6,4 +6,8 @@ layout: default
 
 <div class="post">
   {{ content }}
+
+  Tag: {% for tag in page.tags %}
+    <a href="{{ site.tagURL }}{{ tag }}" title="{{ tag }}" class="highlighter-rouge tag">{{ tag }}</a>
+  {% endfor %}
 </div>
