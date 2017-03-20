@@ -75,4 +75,10 @@ footer {
   // bottom: 0;
   line-height: 50px;
   font-family: $base-font-family;
+  span {
+    animation: blink 1s ease-in infinite;
+  }
+}
+@keyframes blink {
+  100% { opacity: 0}
 }
