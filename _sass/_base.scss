@@ -53,10 +53,10 @@ html, body, .wrapper, .sidebar, .container {
   padding-left: 400px;
   max-width: 700px;
   line-height: 25px;
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, th {
     font-family: $title-font-family;
   }
-  p, ul li, ol li {
+  p, ul li, ol li, td {
     font-family: $content-font-family;
   }
 }
