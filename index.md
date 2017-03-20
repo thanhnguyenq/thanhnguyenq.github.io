@@ -2,58 +2,17 @@
 layout: default
 title: Thanh Nguyen
 ---
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+# Brawlhalla Legend Table
 
-*Emphasis*
- **Strong Emphasis**
- **_Combine_**
- ~~Strikethrough~~
-
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list.
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
-
-* Unordered list can use asterisks
-- Or minuses
-+ Or pluses
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
-
-![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
-
-Inline `code` has `back-ticks around` it.
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
-
-```python
-s = "Python syntax highlighting"
-print s
-```
-
-```
-No language indicated, so no syntax highlighting.
-But let's throw in a <b>tag</b>.
-```
-
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-> Blockquotes are very handy in email to emulate reply
-> Is this second line
-
-> OK this is second line
+| Hammer | Lance | Sword | Blasters | Spear | Katars | Axe | Bow | Gauntlets |  Scythe
+---|---|---|---|---|---|---|---|---|---
+Hammer | X | Scarlet | Bodvar | Cassidy | Gnash | Sentinel | Teros | | Kor |
+Lance | Scarlet | X | Sir Roland | Lord Vraxx | Orion | | | | |
+Sword | Bodvar | Sir Roland | X | Thatch | Hattori | Asuri | | Koji | Val7000 |
+Blasters | Cassidy | Lord Vraxx | Thatch | X | Ada | Lucien | Barraza | Diana | | Nix
+Spear | Gnash | Orion | Hattori | Ada | X | Qeen Nai | Bryn | | Wu Sang | Mirage
+Katars | Sentinel | | Asuri | Lucien | Qeen Nai | X | | Ember | |
+Axe | Teros | | | Barraza | Bryn | | X | | |
+Bow | | | Koji | Diana | | Ember | | X | |
+Gauntlets | Kor | | Val7000 | | Wu Sang | | | | X |
+Scythe | | | | Nix | Mirage | | | | | X
