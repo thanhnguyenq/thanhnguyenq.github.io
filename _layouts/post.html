@@ -7,7 +7,8 @@ layout: default
 <div class="post">
   {{ content }}
 
-  <p>Tag:</p> {% for tag in page.tags %}
+  <p style="display: inline-block;">Tag:</p>
+  {% for tag in page.tags %}
     <a href="{{ site.tagURL }}{{ tag }}" title="{{ tag }}" class="highlighter-rouge tag">{{ tag }}</a>
   {% endfor %}
 </div>
