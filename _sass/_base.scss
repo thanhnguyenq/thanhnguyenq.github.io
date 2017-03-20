@@ -12,6 +12,18 @@ html, body, .wrapper, .sidebar {
   margin: 0;
   padding: 0;
 }
+small {
+  font-size: 12px;
+  color: #999;
+  font-weight: 400;
+}
+a {
+	text-decoration: none;
+  &:visited {
+  	color: $base-color;
+  }
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -60,23 +72,21 @@ html, body, .wrapper, .sidebar {
   height: 100%;
   .content {
     min-height: calc(100% - 110px);
-    .post {
-      .tag {
-        text-decoration: none;
-        color: $base-color;
-        margin-left: 15px;
-        &:hover {
-          color: white;
-          background: $base-color;
-        }
-      }
-    }
   }
   h1, h2, h3, h4, h5, h6, th {
     font-family: $title-font-family;
   }
   p, ul li, ol li, td {
     font-family: $content-font-family;
+  }
+}
+.tag {
+  text-decoration: none;
+  color: $base-color;
+  margin-left: 15px;
+  &:hover {
+    color: white;
+    background: $base-color;
   }
 }
 footer {
