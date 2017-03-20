@@ -5,7 +5,7 @@
   background: rgba(34, 34, 34, 0.19);
 }
 ::-webkit-scrollbar-thumb {
-  background: #007cd5;
+  background: $base-color;
 }
 html, body, .wrapper, .sidebar, .container {
   height: 100%;
@@ -17,7 +17,7 @@ html, body, .wrapper, .sidebar, .container {
   top: 0;
   left: 0;
   width: 300px;
-  background-color: #007cd5;
+  background-color: $base-color;
   img {
     width: 200px;
     margin-left: 50px;
@@ -44,6 +44,10 @@ html, body, .wrapper, .sidebar, .container {
           color: white;
           font-family: $base-font-family;
           font-size: 24px;
+        }
+        &:hover {
+          transform: scale(1.1);
+          transition:all 0.5s;
         }
       }
     }
