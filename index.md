@@ -4,7 +4,7 @@ title: Thanh Nguyen
 ---
 # Brawlhalla Legend Table
 
-| Hammer | Lance | Sword | Blasters | Spear | Katars | Axe | Bow | Gauntlets |  Scythe
+&nbsp;| Hammer | Lance | Sword | Blasters | Spear | Katars | Axe | Bow | Gauntlets |  Scythe
 ---|---|---|---|---|---|---|---|---|---
 Hammer | X | Scarlet | Bodvar | Cassidy | Gnash | Sentinel | Teros | | Kor |
 Lance | Scarlet | X | Sir Roland | Lord Vraxx | Orion | | | | |
