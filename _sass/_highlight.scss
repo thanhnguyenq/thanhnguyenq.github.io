@@ -5,3 +5,20 @@
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
+blockquote {
+  border-left: 5px solid #207ef8;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  &:before {
+    color: #207ef8;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  p {
+    display: inline;
+  }
+}
