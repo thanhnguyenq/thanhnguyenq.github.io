@@ -13,7 +13,7 @@ html, body, .wrapper, .sidebar, .container {
   padding: 0;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 300px;
@@ -29,7 +29,7 @@ html, body, .wrapper, .sidebar, .container {
     color: white;
     text-align: center;
     font-size: 32px;
-    font-family: $base-font-size;
+    font-family: $base-font-family;
     margin: 0;
   }
   .menu {
@@ -42,7 +42,7 @@ html, body, .wrapper, .sidebar, .container {
         a {
           text-decoration: none;
           color: white;
-          font-family: $base-font-size;
+          font-family: $base-font-family;
           font-size: 24px;
         }
       }
@@ -58,5 +58,5 @@ footer {
   position: absolute;
   bottom: 0;
   line-height: 50px;
-  font-family: $base-font-size;
+  font-family: $base-font-family;
 }

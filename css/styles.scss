@@ -1,7 +1,9 @@
 ---
 # Front matter comment to ensure Jekyll properly reads file.
 ---
-$base-font-size: 'Source Code Pro', monospace;
+$base-font-family: 'Source Code Pro', monospace;
+$title-font-family: 'Noto Serif', serif;
+$content-font-family: 'Noto Sans', sans-serif;
 
 // Imports
 @import "_base";
