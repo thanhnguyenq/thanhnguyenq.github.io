@@ -1,0 +1,33 @@
+---
+layout: default
+title: Get Link Google Drive
+---
+<input id="drive-link" class="search-box" placeholder="https://drive.google.com/..." type="url">
+<button type="button" id="link-analyst">Analyst</button>
+<div style="height: 20px"></div>
+<div id="analyst-result"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+const GG_API_KEY = "AIzaSyC1WyP_glm0d4wW1vYqW8IVwl-kOhhnpIo";
+const GG_API_LINK ="https://www.googleapis.com/drive/v3/files/";
+
+$('#drive-link').click(() => {
+  var id = $("#drive-link").val().match(/https?:\/{2}drive.google.com\/file\/d\/([^/]*).*/i);
+  if(!id) {
+    // Check folder
+
+  } else {
+    $.ajax({
+      url: GG_API_LINK + id[1] + "?key=" + GG_API_KEY,
+    }).done((data) => {
+      $("#analyst-result").html('<label for="drive-link-single">' + data["name"]
+      + '</label><input type="text" id="drive-link-single" value="' + GG_API_LINK + id[1]
+      + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://docs.google.com/uc?export=download&id='
+      + id[1] + '">Goole</a><a href="' + GG_API_LINK + id[1] + '?alt=media&key=' + GG_API_KEY + '" download="'
+      + data["name"] + '">API</a>');
+    });
+  }
+});
+</script>
