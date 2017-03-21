@@ -8,8 +8,8 @@
   background: $base-color;
 }
 input::-webkit-input-placeholder{
-    color: $base-color;
-    opacity:0.8;
+  color: $base-color;
+  opacity:0.8;
 }
 * {
   outline: none;
@@ -29,15 +29,6 @@ a {
   color: $base-color;
   &:visited {
     color: $base-color;
-  }
-}
-.nav-menu {
-  display: none;
-  height: 50px;
-  img {
-    width: 40px;
-    border-radius: 100px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 }
 .meta {
@@ -159,10 +150,15 @@ footer {
 // Responsive
 @media screen and (max-width: 900px) , screen and (max-height: 570px) {
   .sidebar {
-    display: none;
-  }
-  .nav-menu {
-    display: block;
+    height: 50px;
+    width: 100%;
+    img {
+      width: 40px;
+      margin-top: 5px;
+      margin-left: 20px;
+      border-radius: 100px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
   }
   .container {
     padding-left: 100px;
