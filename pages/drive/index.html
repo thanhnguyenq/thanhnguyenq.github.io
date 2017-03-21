@@ -28,7 +28,7 @@ $('#link-analyst').click(() => {
       } else {
         $("#analyst-result").html('<label for="drive-link-single" style="margin-right: 20px;">' + data["name"]
         + '</label><input type="text" id="drive-link-single" style="margin-right: 20px;" value="' + GG_API_LINK + id[2]
-        + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="{{ site.renameURL }}https://docs.google.com/uc?export=download&id='
+        + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://thanhnguyenq.github.io/pages/drive/rename/?ref=https://docs.google.com/uc?export=download&id='
         + id[2] + '" style="margin-right: 20px;" class="highlighter-rouge">Google</a><a href="' + GG_API_LINK + id[2] + '?alt=media&key=' + GG_API_KEY + '" download="'
         + data["name"] + '" class="highlighter-rouge">API</a>');
       }
@@ -44,7 +44,7 @@ var getFolder = (id) => {
     data.items.forEach((item, idx) => {
       $("#analyst-result").append('<label for="drive-link-'+idx+'" style="margin-right: 20px;">' + item["originalFilename"]
       + '</label><input type="text" id="drive-link-'+idx+'" style="margin-right: 20px;" value="' + GG_API_LINK + item["id"]
-      + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="{{ site.renameURL }}https://docs.google.com/uc?export=download&id='
+      + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://thanhnguyenq.github.io/pages/drive/rename/?ref=https://docs.google.com/uc?export=download&id='
       + item["id"] + '" style="margin-right: 20px;" class="highlighter-rouge">Google</a><a href="' + GG_API_LINK + item["id"] + '?alt=media&key=' + GG_API_KEY + '" download="'
       + item["originalFilename"] + '" class="highlighter-rouge">API</a><br><br>');
     });
