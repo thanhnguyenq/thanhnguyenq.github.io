@@ -134,7 +134,7 @@ button {
   h1, h2, h3, h4, h5, h6, th {
     font-family: $title-font-family;
   }
-  p, ul li, ol li, td {
+  p, ul li, ol li, td, label {
     font-family: $content-font-family;
   }
 }

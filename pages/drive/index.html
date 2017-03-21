@@ -14,18 +14,18 @@ const GG_API_KEY = "AIzaSyC1WyP_glm0d4wW1vYqW8IVwl-kOhhnpIo";
 const GG_API_LINK ="https://www.googleapis.com/drive/v3/files/";
 
 $('#link-analyst').click(() => {
-  var id = $("#drive-link").val().match(/https?:\/{2}drive.google.com\/file\/d\/([^/]*).*/i);
+  var id = $("#drive-link").val().trim().match(/https?:\/{2}drive.google.com\/(file\/d\/|open\?id=)([^/]*).*/i);
   if(!id) {
     // Check folder
 
   } else {
     $.ajax({
-      url: GG_API_LINK + id[1] + "?key=" + GG_API_KEY,
+      url: GG_API_LINK + id[2] + "?key=" + GG_API_KEY,
     }).done((data) => {
-      $("#analyst-result").html('<label for="drive-link-single">' + data["name"]
-      + '</label><input type="text" id="drive-link-single" value="' + GG_API_LINK + id[1]
+      $("#analyst-result").html('<label for="drive-link-single" style="margin-right: 20px;">' + data["name"]
+      + '</label><input type="text" id="drive-link-single" style="margin-right: 20px;" value="' + GG_API_LINK + id[2]
       + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://docs.google.com/uc?export=download&id='
-      + id[1] + '">Goole</a><a href="' + GG_API_LINK + id[1] + '?alt=media&key=' + GG_API_KEY + '" download="'
+      + id[2] + '" style="margin-right: 20px;">Goole</a><a href="' + GG_API_LINK + id[2] + '?alt=media&key=' + GG_API_KEY + '" download="'
       + data["name"] + '">API</a>');
     });
   }
