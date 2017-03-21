@@ -11,16 +11,15 @@ var keyword_arr = url.match(/(?:\?tag=)([a-zA-z0-9]+)/i);
 var keyword = keyword_arr[1];
 $('#tag-name').html(keyword);
 $.getJSON("{{ site.allpost }}", (datas) => {
+  var count = 0;
   datas.forEach((data) => {
     if(data.tags.indexOf(keyword) != -1) {
-      $("#content").append("<div class='search-block'>")
-      $("#content").append("<a href='" + data.url + "'>" + data.title + "</a>");
-      $("#content").append('<p class="date-time"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;' + data.date + '</p>');
-      $("#content").append('</div>');
+      count++;
+      $("#content").append("<div class='search-block'><a href='" + data.url + "'>" + data.title + "</a><p class='date-time'><i class='fa fa-calendar' aria-hidden='true' ></i>&nbsp;" + data.date + "</p></div>");
     }
   });
-  if(datas.length == 0) {
-    $("#content").append("<h2>No result!</h2>")
+  if(count == 0) {
+    $("#content").append("<h2>Not found any result!</h2>")
   }
 });
 </script>
