@@ -17,17 +17,37 @@ $('#link-analyst').click(() => {
   var id = $("#drive-link").val().trim().match(/https?:\/{2}drive.google.com\/(file\/d\/|open\?id=)([^/]*).*/i);
   if(!id) {
     // Check folder
-
+    id = $("gg-link").val().trim().match(/https?:\/{2}drive.google.com\/drive\/folders\/([^/?]*).*/i);
+    getFolder(id[1]);
   } else {
     $.ajax({
       url: GG_API_LINK + id[2] + "?key=" + GG_API_KEY,
     }).done((data) => {
-      $("#analyst-result").html('<label for="drive-link-single" style="margin-right: 20px;">' + data["name"]
-      + '</label><input type="text" id="drive-link-single" style="margin-right: 20px;" value="' + GG_API_LINK + id[2]
-      + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://docs.google.com/uc?export=download&id='
-      + id[2] + '" style="margin-right: 20px;">Goole</a><a href="' + GG_API_LINK + id[2] + '?alt=media&key=' + GG_API_KEY + '" download="'
-      + data["name"] + '">API</a>');
+      if(data["mimeType"].indexOf("folder") != -1) {
+        getFolder(id[2]);
+      } else {
+        $("#analyst-result").html('<label for="drive-link-single" style="margin-right: 20px;">' + data["name"]
+        + '</label><input type="text" id="drive-link-single" style="margin-right: 20px;" value="' + GG_API_LINK + id[2]
+        + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://docs.google.com/uc?export=download&id='
+        + id[2] + '" style="margin-right: 20px;">Goole</a><a href="' + GG_API_LINK + id[2] + '?alt=media&key=' + GG_API_KEY + '" download="'
+        + data["name"] + '">API</a>');
+      }
     });
   }
 });
+
+var getFolder = (id) => {
+  $.ajax({
+    url:  "https://www.googleapis.com/drive/v2/files?q='"+ id +"'+in+parents&key=" + GG_API_KEY,
+  }).done((data) => {
+    data.items.forEach((item, idx) => {
+      $("#analyst-result").html(" ");
+      $("#analyst-result").append('<label for="drive-link-'+idx+'" style="margin-right: 20px;">' + item["originalFilename"]
+      + '</label><input type="text" id="drive-link-'+idx+'" style="margin-right: 20px;" value="' + GG_API_LINK + item["id"]
+      + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://docs.google.com/uc?export=download&id='
+      + item["id"] + '" style="margin-right: 20px;">Goole</a><a href="' + GG_API_LINK + item["id"] + '?alt=media&key=' + GG_API_KEY + '" download="'
+      + item["originalFilename"] + '">API</a><br>');
+    });
+  });
+};
 </script>
