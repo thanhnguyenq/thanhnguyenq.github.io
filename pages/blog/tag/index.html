@@ -15,7 +15,7 @@ $.getJSON("{{ site.allpost }}", (datas) => {
   datas.forEach((data) => {
     if(data.tags.indexOf(keyword) != -1) {
       count++;
-      $("#content").append("<div class='search-block'><a href='" + data.url + "'>" + data.title + "</a><p class='date-time'><i class='fa fa-calendar' aria-hidden='true' ></i>&nbsp;" + data.date + "</p></div>");
+      $("#content").append("<div class='search-block'><a href='" + data.url + "'>" + data.title + "<p class='date-time'><i class='fa fa-calendar' aria-hidden='true' ></i>&nbsp;" + data.date + "</p></a></div>");
     }
   });
   if(count == 0) {

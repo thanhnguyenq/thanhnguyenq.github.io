@@ -10,4 +10,4 @@ allpost: "https://thanhnguyenq.github.io/allpost.json"
 
 # gems:
 #   - jekyll-paginate
-tagURL : "/pages/blog/tag/#"
+tagURL : "/pages/blog/tag/?tag="
