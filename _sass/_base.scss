@@ -148,7 +148,7 @@ footer {
 }
 
 // Responsive
-@media (min-width: 850px) and (max-width: 900px) , (min-height: 1px) and (max-height: 570px)  {
+@media (min-width: 850px) and (max-width: 900px), (min-height: 1px) and (max-height: 570px)  {
   .sidebar {
     height: 50px;
     width: 100%;
@@ -198,8 +198,8 @@ footer {
     }
     p {
       display: inline;
-      position: fixed;
       top: 5px;
+      left: unset;
     }
     .menu {
       ul {
