@@ -10,6 +10,9 @@ var keyword = keyword_arr[1];
 $.getJSON("{{ site.allpost }}", (datas) => {
   datas.forEach((data) => {
     console.log(data.tags);
+    if(data.tags.indexOf(keyword)) {
+      $("#content").html("<p>"+data.title+"</p><br>");
+    }
   });
 });
 </script>
