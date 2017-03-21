@@ -2,7 +2,7 @@
 layout: default
 title: Thanh Nguyen
 ---
-# Brawlhalla Legend Table
+<!-- # Brawlhalla Legend Table
 
 &nbsp;| Hammer | Lance | Sword | Blasters | Spear | Katars | Axe | Bow | Gauntlets |  Scythe
 ---|---|---|---|---|---|---|---|---|---
@@ -15,4 +15,6 @@ Katars | Sentinel | | Asuri | Lucien | Qeen Nai | X | | Ember | |
 Axe | Teros | | | Barraza | Bryn | | X | | |
 Bow | | | Koji | Diana | | Ember | | X | |
 Gauntlets | Kor | | Val7000 | | Wu Sang | | | | X |
-Scythe | | | | Nix | Mirage | | | | | X
+Scythe | | | | Nix | Mirage | | | | | X -->
+
+Don't be shine, cause everyone is he***!
