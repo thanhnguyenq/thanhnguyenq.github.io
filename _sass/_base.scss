@@ -19,6 +19,7 @@ small {
 }
 a {
   text-decoration: none;
+  color: $base-color;
   &:visited {
     color: $base-color;
   }
@@ -27,6 +28,24 @@ a {
   color: #8f8f8f;
   font-size: 12px;
   margin-top: -18px;
+}
+.search-box {
+  width: 80%;
+  height: 50px;
+  border: 1px solid $base-color;
+  border-radius: 100px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: $base-color;
+}
+.search-btn {
+  z-index: 1;
+  left: -42px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+  width: 0;
+  color: $base-color;
 }
 .search-block {
   transition: 0.3s ease;

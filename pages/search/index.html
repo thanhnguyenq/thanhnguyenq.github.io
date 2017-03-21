@@ -1,0 +1,35 @@
+---
+layout: default
+title: Search Blog
+---
+<input id="search-kw" class="search-box" placeholder="Search" type="text">
+<i id="search-btn" class="fa fa-search fa-2x search-btn" ></i>
+<!-- <h1 style="display: inline;margin-right: 14px;">Keyword:</h1>
+<p id="search-key" class="highlighter-rouge" style="display: inline-block; color: #207ef8;"></p>
+<div style="height: 20px"></div> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $('#search-btn').click(() => {
+    search();
+  });
+  $('#search-btn').keyup((event) => {
+    if(event.keyCode == 13) {
+      search();
+    }
+  });
+  var search = () => {
+    var keyword = $('#search-kw').val();
+    $.getJSON("{{ site.allpost }}", (datas) => {
+      var count = 0;
+      datas.forEach((data) => {
+        if(data.title.toLowerCase().indexOf(keyword.toLowerCase()) != -1) {
+          count++;
+          $("#content").append("<div class='search-block'><a href='" + data.url + "'>" + data.title + "<p class='date-time'><i class='fa fa-calendar' aria-hidden='true' ></i>&nbsp;" + data.date + "</p></a></div>");
+        }
+      });
+      if(count == 0) {
+        $("#content").append("<h2>Not found any result!</h2>")
+      }
+    });
+  };
+</script>
