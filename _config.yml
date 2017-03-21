@@ -11,3 +11,4 @@ allpost: "https://thanhnguyenq.github.io/allpost.json"
 # gems:
 #   - jekyll-paginate
 tagURL : "/pages/blog/tag/?tag="
+renameURL : "https://thanhnguyenq.github.io/pages/drive/rename/?ref="
