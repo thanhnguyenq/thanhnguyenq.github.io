@@ -20,7 +20,7 @@ title: Search Blog
     }
   });
   var search = () => {
-    $('#content').append('<h1 style="display: inline;margin-right: 14px;">Result of </h1><p id="search-key" class="highlighter-rouge" style="display: inline-block; color: #207ef8;"></p><div style="height: 20px"></div><div id="search-result"></div>');
+    $('#content').append('<div id="search-result"><h1 style="display: inline;margin-right: 14px;">Result of </h1><p id="search-key" class="highlighter-rouge" style="display: inline-block; color: #207ef8;"></p><div style="height: 20px"></div></div>');
     var keyword = $('#search-kw').val();
     $('#search-key').html(keyword);
     $('#search-result').html('');
