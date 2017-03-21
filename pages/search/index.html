@@ -5,10 +5,10 @@ title: Search Blog
 <input id="search-kw" class="search-box" placeholder="Search" type="text">
 <i id="search-btn" class="fa fa-search fa-2x search-btn" ></i>
 <div style="height: 20px"></div>
-<h1 style="display: inline;margin-right: 14px;">Result of </h1>
+<!-- <h1 style="display: inline;margin-right: 14px;">Result of </h1>
 <p id="search-key" class="highlighter-rouge" style="display: inline-block; color: #207ef8;"></p>
 <div style="height: 20px"></div>
-<div id="search-result"></div>
+<div id="search-result"></div> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
   $('#search-btn').click(() => {
@@ -20,6 +20,7 @@ title: Search Blog
     }
   });
   var search = () => {
+    $('#content').append('<h1 style="display: inline;margin-right: 14px;">Result of </h1><p id="search-key" class="highlighter-rouge" style="display: inline-block; color: #207ef8;"></p><div style="height: 20px"></div><div id="search-result"></div>');
     var keyword = $('#search-kw').val();
     $('#search-key').html(keyword);
     $('#search-result').html('');
