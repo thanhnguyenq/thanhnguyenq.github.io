@@ -31,6 +31,15 @@ a {
     color: $base-color;
   }
 }
+.nav-menu {
+  display: none;
+  height: 50px;
+  img {
+    width: 40px;
+    border-radius: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
 .meta {
   color: #8f8f8f;
   font-size: 12px;
@@ -151,5 +160,11 @@ footer {
 @media screen and (max-width: 900px) , screen and (max-height: 570px) {
   .sidebar {
     display: none;
+  }
+  .nav-menu {
+    display: block;
+  }
+  .container {
+    padding-left: 100px;
   }
 }
