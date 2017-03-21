@@ -7,6 +7,12 @@
 ::-webkit-scrollbar-thumb {
   background: $base-color;
 }
+input::-webkit-input-placeholder{
+    color: $base-color;
+}
+* {
+  outline: none;
+}
 html, body, .wrapper, .sidebar {
   height: 100%;
   margin: 0;
