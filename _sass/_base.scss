@@ -23,7 +23,11 @@ a {
   	color: $base-color;
   }
 }
-
+.meta {
+  color: #8f8f8f;
+  font-size: 12px;
+  margin-top: -18px;
+}
 .sidebar {
   position: fixed;
   top: 0;

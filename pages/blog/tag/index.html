@@ -1,17 +1,20 @@
 ---
 layout: default
-title: Tag
+title: Tag Search
 ---
+<h1>Tag:</h1><p id="tag-name"></p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 var url = window.location.href;
 var keyword_arr = url.match(/(?:\?tag=)([a-zA-z0-9]+)/i);
 var keyword = keyword_arr[1];
+$('#tag-name').html(keyword);
 $.getJSON("{{ site.allpost }}", (datas) => {
   datas.forEach((data) => {
     console.log(data.tags);
     if(data.tags.indexOf(keyword)) {
-      $("#content").html("<p>"+data.title+"</p><br>");
+      $("#content").html("<a href='" + data.url + "'>" + data.title + "</a><br>");
+      $("#content").append('<p class="meta"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;' + site.date + '</p>');
     }
   });
 });
