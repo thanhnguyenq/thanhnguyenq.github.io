@@ -34,6 +34,8 @@ title: Search Blog
       if(count == 0) {
         $("#search-result").append("<h2>Not found any result!</h2>")
       }
+      $('#search-key').append('<sup>' + count + '</sup>');
     });
+    $('#search-kw').val('');
   };
 </script>

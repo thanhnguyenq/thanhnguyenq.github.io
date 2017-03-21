@@ -22,5 +22,6 @@ $.getJSON("{{ site.allpost }}", (datas) => {
   if(count == 0) {
     $("#content").append("<h2>Not found any result!</h2>")
   }
+  $('#tag-name').append('<sup>' + count + '</sup>');
 });
 </script>
