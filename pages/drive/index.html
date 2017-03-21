@@ -13,7 +13,7 @@ title: Get Link Google Drive
 const GG_API_KEY = "AIzaSyC1WyP_glm0d4wW1vYqW8IVwl-kOhhnpIo";
 const GG_API_LINK ="https://www.googleapis.com/drive/v3/files/";
 
-$('#drive-link').click(() => {
+$('#link-analyst').click(() => {
   var id = $("#drive-link").val().match(/https?:\/{2}drive.google.com\/file\/d\/([^/]*).*/i);
   if(!id) {
     // Check folder
