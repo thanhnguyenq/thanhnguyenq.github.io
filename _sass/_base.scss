@@ -159,8 +159,28 @@ footer {
       border-radius: 100px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+    p {
+      display: inline;
+      position: fixed;
+      top: 5px;
+      left: 70px;
+    }
+    .menu {
+      ul {
+        display: inline-block;
+        position: fixed;
+        top: -16px;
+        left: 310px;
+        margin: 0;
+        li {
+          display: inline-block;
+          margin-left: 5px;
+        }
+      }
+    }
   }
   .container {
     padding-left: 100px;
+		margin-top: 50px;
   }
 }
