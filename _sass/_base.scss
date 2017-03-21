@@ -148,7 +148,7 @@ footer {
 }
 
 // Responsive
-@media (min-width: 850px) and (max-width: 900px), (min-height: 1px) and (max-height: 570px)  {
+@media (min-width: 850px) and (max-width: 900px) and (min-height: 1px) and (max-height: 570px)  {
   .sidebar {
     height: 50px;
     width: 100%;
