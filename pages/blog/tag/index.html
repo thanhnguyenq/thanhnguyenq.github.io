@@ -2,8 +2,12 @@
 layout: default
 title: Tag
 ---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 var url = window.location.href;
-document.getElementById('content').innerHTML = url;
-console.log(url);
+var keyword_arr = url.match(/(?:\?tag=)([a-zA-z0-9]+)/i);
+var keyword = keyword_arr[1];
+$.getJSON("{{ site.allpost }}", (data) => {
+  console.log(data);
+});
 </script>
