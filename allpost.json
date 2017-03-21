@@ -6,7 +6,7 @@ title: get all post information to json file
   {
     "title"    : "{{ post.title | escape }}",
     "category" : "{{ post.categories }}",
-    "tags"     : "{{ post.tags | jsonify }}",
+    "tags"     : "{{ post.tags }}",
     "category" : "{{ post.category }}",
     "url"      : "{{ site.baseurl }}{{ post.url }}",
     "date"     : "{{ post.date | date_to_string}}"

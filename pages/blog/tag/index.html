@@ -7,7 +7,9 @@ title: Tag
 var url = window.location.href;
 var keyword_arr = url.match(/(?:\?tag=)([a-zA-z0-9]+)/i);
 var keyword = keyword_arr[1];
-$.getJSON("{{ site.allpost }}", (data) => {
-  console.log(data);
+$.getJSON("{{ site.allpost }}", (datas) => {
+  datas.forEach((data) => {
+    console.log(data.tags);
+  });
 });
 </script>
