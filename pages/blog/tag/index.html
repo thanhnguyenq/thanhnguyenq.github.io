@@ -11,10 +11,11 @@ var keyword = keyword_arr[1];
 $('#tag-name').html(keyword);
 $.getJSON("{{ site.allpost }}", (datas) => {
   datas.forEach((data) => {
-    console.log(data.tags.indexOf(keyword));
-    if(data.tags.indexOf(keyword)) {
-      $("#content").html("<a href='" + data.url + "'>" + data.title + "</a><br>");
-      $("#content").append('<p class="meta"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;' + data.date + '</p>');
+    if(data.tags.indexOf(keyword) != -1) {
+      $("#content").html("<div class='search-block'>")
+      $("#content").append("<a href='" + data.url + "'>" + data.title + "</a><br>");
+      $("#content").append('<p class="date-time"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;' + data.date + '</p>');
+      $("#content").append('</div>');
     }
   });
 });
