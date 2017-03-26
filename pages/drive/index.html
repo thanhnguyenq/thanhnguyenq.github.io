@@ -45,8 +45,7 @@ var getFolder = (id) => {
       $("#analyst-result").append('<label for="drive-link-'+idx+'" style="margin-right: 20px;">' + item["originalFilename"]
       + '</label><input type="text" id="drive-link-'+idx+'" style="margin-right: 20px;" value="' + GG_API_LINK + item["id"]
       + '?alt=media&key=' + GG_API_KEY + '" readonly><a href="https://docs.google.com/uc?export=download&id='
-      // + item["id"] + '" style="margin-right: 20px;" class="highlighter-rouge">Google</a><a href="' + GG_API_LINK + item["id"] + '?alt=media&key=' + GG_API_KEY + '" download="'
-      + item["id"] + '" style="margin-right: 20px;" class="highlighter-rouge">Google</a><a href="https://thanhnguyenq.github.io/pages/drive/rename" download="'
+      + item["id"] + '" style="margin-right: 20px;" class="highlighter-rouge">Google</a><a href="' + GG_API_LINK + item["id"] + '?alt=media&key=' + GG_API_KEY + '" download="'
       + item["originalFilename"] + '" class="highlighter-rouge">API</a><br><br>');
     });
   });
