@@ -38,8 +38,12 @@ Chu kỳ của chuỗi thời gian là một trong những cái mà tập các g
 ![alt text](http://www.developer.com/img/articles/2004/06/29/java1478fig04.gif "Chu kỳ")<br>
 _Hình 2_
 
+Nhìn lên _Hình 2_ ở trên ta thấy diện tích dưới đường cong gần như bằng 0 (giả sử lấy đường ngang làm 0, phía trên đường ngang có giá trị dương, phía dưới có giá trị âm).
+
 ![alt text](http://www.developer.com/img/articles/2004/06/29/java1478fig05.gif "Chu kỳ")<br>
 _Hình 3_
 
-**Nguồn**
-http://www.developer.com/java/other/article.php/3374611
+Ta so sánh _Hình 2_ với _Hình 3_, ta thấy hai hình có chu kỳ giống nhau nhưng _Hình 3_ có thiên hướng tiến về giá trị dương còn _Hình 2_ thì lấy đường ngang làm tâm. Ta cũng thấy rằng _Hình 2_ có diện tích dưới đường cong bằng không trong khi đó _Hình 3_ có diện tích là một số dương.
+
+**Nguồn**<br>
+[Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com")
