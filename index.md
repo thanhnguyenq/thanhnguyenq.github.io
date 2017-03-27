@@ -17,4 +17,12 @@ Bow | | | Koji | Diana | | Ember | | X | |
 Gauntlets | Kor | | Val7000 | | Wu Sang | | | | X |
 Scythe | | | | Nix | Mirage | | | | | X -->
 
-Don't be shine, cause everyone is he***!
+<blockquote id="qt"></blockquote>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$.ajax({
+  url: "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"
+}).done((json) => {
+  $("#qt").text(json["content"]);
+});
+</script>
