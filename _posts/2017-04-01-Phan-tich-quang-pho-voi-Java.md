@@ -28,13 +28,13 @@ Một vài DSP cần thực hiện một lượng cực kỳ lớn các phép to
 **Biểu đồ đường cong**<br>
 Nếu bạn phát thảo chuỗi thời gian bằng đường cong trên đồ thị, chúng ta sẽ thấy rằng tổng giá trị chuỗi thời gian nằm phía trên đường nằm ngang bằng với tổng giá trị chuỗi thời gian nằm phía dưới.
 
-![alt text](http://www.developer.com/img/articles/2004/06/29/java1478fig03.gif "Biểu đồ đường cong")<br>
+![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9OGpFNjh6aW9IbHM "Biểu đồ đường cong")<br>
 _Hình 1_
 
 **Chu kỳ**<br>
 Chu kỳ của chuỗi thời gian là một trong những cái mà tập các giá trị lặp lại theo thời gian. Bạn có thể thấy trong _Hình 2_ một tập giá trị được lặp lại khi di chuyển từ trái sang phải.
 
-![alt text](http://www.developer.com/img/articles/2004/06/29/java1478fig04.gif "Chu kỳ")<br>
+![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9OVV6aEp5SFJBcG8 "Chu kỳ")<br>
 _Hình 2_
 
 Nhìn lên _Hình 2_ ở trên ta thấy diện tích dưới đường cong gần như bằng 0 (giả sử lấy đường ngang làm 0, phía trên đường ngang có giá trị dương, phía dưới có giá trị âm).
@@ -58,7 +58,7 @@ Ví dụ như bạn hoàn toàn có thể chuyển đổi thông tin từ miền
 
 Nếu bạn vẽ một đồ thị biểu hiện đượng điện áp ảnh hưởng đến cuộn dây loa theo thời gian trong một hệ thống âm thanh thì nó là một chuỗi thòi gian, là một thành phần trong miền thời gian.
 
-![alt text](http://static.nguyenkimmall.com/images/detailed/228/dieu-chinh-equalizer-tren-cac-trinh-choi-nhac-pho-bien-tren-dien-thoai-0.jpg "Equalizer")<br>
+![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9OHgyRl9wc3VlUjA "Equalizer")<br>
 
 Nếu bạn quan sát ánh đèn lên xuống trên bộ lọc tần số (Equalizer) khi đang chơi nhạc có nghĩa là bạn đang quan sát cùng một thông tin trong miền tần số. Thông thường ánh đèn phía beentrais đại diện cho tần số thấp hoặc bass trong khi đó ánh đền bên phải tượng trưng cho tần số cao hay treble. Thường thì nó có một thanh trượt tương ứng với mỗi nhóm cột sáng cho phép bạn áp dụng bộ lọc để nhấn mạnh một số phần của phổ tần số và làm giảm các phần các của phổ tần số.
 
@@ -106,18 +106,25 @@ Thông thường chúng ta quan tâm nhầu tần số nên sẽ lặp lại cá
 
 Ta có một vài hệ thức lượng giác sau:
 
-$$sin(a).sin(b)=\frac{cos(a-b)-cos(a+b)}{2}\\
-cos(a).cos(b)=\frac{cos(a-b)+cos(a+b)}{2}\\
-sin(a).cos(b)=\frac{sin(a+b)+sin(a-b)}{2}$$
+$$sin(a).sin(b)=\frac{cos(a-b)-cos(a+b)}{2}$$<br>
+$$cos(a).cos(b)=\frac{cos(a-b)+cos(a+b)}{2}$$<br>
+$$sin(a).cos(b)=\frac{sin(a+b)+sin(a-b)}{2}$$
 
 Mặc dù các hệ thức trên áp dụng cho tích của $$cos$$ và $$sin$$ với góc $$a$$ và $$b$$, đây là hệ thức đơn gian để mở rộng và áp dụng cho tính toán với chuỗi thời gian gồm có hàm $$cos$$ và $$sin$$.
 
 **Tích của hàm $$sin$$ và $$cos$$**<br>
-Với từng trường hợp ở dưới đây thì hàm $$f(n)$$ là một chuỗi thòi gian được tính bởi tích hai chuỗi thời gian khác là hàm $$sin$$ và hàm $$cos$$
+Với từng trường hợp ở dưới đây thì hàm $$f(n)$$ là một chuỗi thời gian được tính bởi tích hai chuỗi thời gian khác là hàm $$sin$$ và hàm $$cos$$
 
 $$\begin{align}f(n)&=sin(a.n).sin(b.n)\\&=\frac{cos((a-b).n)-cos((a+b).n)}{2}\end{align}$$<br>
 $$\begin{align}f(n)&=cos(a.n).cos(b.n)\\&=\frac{cos((a-b).n)+cos((a+b).n)}{2}\end{align}$$<br>
 $$\begin{align}f(n)&=sin(a.n).cos(b.n)\\&=\frac{sin((a+b).n)+sin((a-b).n)}{2}\end{align}$$
 
+Sau đây chúng ta sẽ viết lại và đơn giản háo ba hàm bên trên trong trường hợp đặc biết là $$a=b$$
+
+$$\begin{align}f(n)&=sin(a.n).sin(a.n)\\&=\frac{1-cos(2a.n)}{2}\end{align}$$<br>
+$$\begin{align}f(n)&=cos(a.n).cos(a.n)\\&=\frac{1+cos(2a.n)}{2}\end{align}$$<br>
+$$\begin{align}f(n)&=sin(a.n).cos(a.n)\\&=\frac{sin(2a.n)}{2}\end{align}$$
+
+![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9ZGdEMHFkcXQ3dG8 "Product two sin")<br>
 **Nguồn**<br>
 [Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}
