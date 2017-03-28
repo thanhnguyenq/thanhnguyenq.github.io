@@ -80,7 +80,7 @@ Mặc dù DFT tổng quát hơn FFT nhưng FFT lại nhanh hơn DFT. Có một �
 Vì giải thuật DFT dễ hiểu hơn FFT nên chúng ta sẽ tập trung giải thích thuật toán DFT.
 
 **DFT**<br>
-Sau đây là các biểu thức cần phải đánh giá để xác định nội dung phổ tần số của chuỗi thời gian tại tần số **F**
+Sau đây là các biểu thức cần phải đánh giá để xác định nội dung phổ tần số của chuỗi thời gian tại tần số $$F$$
 
 $$Real(F) = \sum_{n = 0}^{N - 1} x(n).cos(2\pi .F.n)$$<br>
 $$Imag(F) = \sum_{n = 0}^{N - 1} x(n).sin(2\pi .F.n)$$<br>
@@ -106,14 +106,18 @@ Thông thường chúng ta quan tâm nhầu tần số nên sẽ lặp lại cá
 
 Ta có một vài hệ thức lượng giác sau:
 
-$$sin(a).sin(b)=\frac{cos(a-b)-cos(a+b)}{2}$$<br>
-$$cos(a).cos(b)=\frac{cos(a-b)+cos(a+b)}{2}$$<br>
-$$sin(a).cos(b)=\frac{sin(a+b)+sin(a-b)}{2}$$
+$$sin(a).sin(b)=\frac{cos(a-b)-cos(a+b)}{2}\\
+cos(a).cos(b)=\frac{cos(a-b)+cos(a+b)}{2}\\
+sin(a).cos(b)=\frac{sin(a+b)+sin(a-b)}{2}$$
 
 Mặc dù các hệ thức trên áp dụng cho tích của $$cos$$ và $$sin$$ với góc $$a$$ và $$b$$, đây là hệ thức đơn gian để mở rộng và áp dụng cho tính toán với chuỗi thời gian gồm có hàm $$cos$$ và $$sin$$.
 
 **Tích của hàm $$sin$$ và $$cos$$**<br>
+Với từng trường hợp ở dưới đây thì hàm $$f(n)$$ là một chuỗi thòi gian được tính bởi tích hai chuỗi thời gian khác là hàm $$sin$$ và hàm $$cos$$
 
+$$\begin{align}f(n)&=sin(a.n).sin(b.n)\\&=\frac{cos((a-b).n)-cos((a+b).n)}{2}\end{align}$$<br>
+$$\begin{align}f(n)&=cos(a.n).cos(b.n)\\&=\frac{cos((a-b).n)+cos((a+b).n)}{2}\end{align}$$<br>
+$$\begin{align}f(n)&=sin(a.n).cos(b.n)\\&=\frac{sin((a+b).n)+sin((a-b).n)}{2}\end{align}$$
 
 **Nguồn**<br>
 [Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}
