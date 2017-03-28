@@ -112,5 +112,8 @@ $$sin(a).cos(b)=\frac{sin(a+b)+sin(a-b)}{2}$$
 
 Mặc dù các hệ thức trên áp dụng cho tích của $$cos$$ và $$sin$$ với góc $$a$$ và $$b$$, đây là hệ thức đơn gian để mở rộng và áp dụng cho tính toán với chuỗi thời gian gồm có hàm $$cos$$ và $$sin$$.
 
+**Tích của hàm $$sin$$ và $$cos$$**<br>
+
+
 **Nguồn**<br>
 [Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}
