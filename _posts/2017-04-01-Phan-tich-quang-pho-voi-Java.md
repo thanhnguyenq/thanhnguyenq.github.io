@@ -125,6 +125,43 @@ $$\begin{align}f(n)&=sin(a.n).sin(a.n)\\&=\frac{1-cos(2a.n)}{2}\end{align}$$<br>
 $$\begin{align}f(n)&=cos(a.n).cos(a.n)\\&=\frac{1+cos(2a.n)}{2}\end{align}$$<br>
 $$\begin{align}f(n)&=sin(a.n).cos(a.n)\\&=\frac{sin(2a.n)}{2}\end{align}$$
 
+**Kết quả của tích hai hàm $$sin$$ tại cùng một tần số**<br>
+Giờ chúng ta hãy áp dụng các hàm trên, ví dụ như ta có một chuỗi thời gian cho hàm đầu tiên trong ba hàm trên. Trường hợp này là kết quả của hao hàm $$sin$$ có cùng tần số, kết quả được hiển thị trong _Hình 4_.
+
 ![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9ZGdEMHFkcXQ3dG8 "Product two sin")<br>
+_Hình 4_
+
+Đường màu đỏ thể hiện hàm $$sin(x)$$ còn đường màu xanh là kết quả của phép nhân giữa $$sin(X)$$ và $$sin(x)$$.
+
+Bây giờ nếu tính tổng giá trị của đường màu xanh với số chẵn chu kỳ thì tổng của nó sẽ khác 0 hay cũng có thể nói nó là một số dương.
+
+Trở lại với biểu thức $$Imag(F)$$ (phần ảo được tính bởi tích chuỗi thời gian với hàm $$sin$$ và tổng của chúng). Nếu chuỗi thời gian có chứa thành phần $$sin$$ có cùng một tần số với hàm $$sin$$ thì thành phần đó sẽ đóng góp một giá trị khác không vào kết quả tổng. Vì vậy phần ảo của sự chuyển đổi tại tần số đó sẽ khác 0.
+
+**Kết quả của tích hai hàm $$cos$$ tại cùng một tần số**<br>
+Cũng như trên, bây giờ ta sẽ tính theo hàm thứ hai. Trường hợp này là kết quả của hao hàm $$cos$$ có cùng tần số, kết quả được hiển thị trong _Hình 5_.
+
+![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9NmJ4Y245Sm9SdWM "Product two cos")<br>
+_Hình 5_
+
+Đường màu đỏ thể hiện hàm $$cos(x)$$ còn đường màu xanh là kết quả của phép nhân giữa $$cos(X)$$ và $$cos(x)$$.
+
+Bây giờ nếu tính tổng giá trị của đường màu xanh với số chẵn chu kỳ thì tổng của nó sẽ khác 0 hay cũng có thể nói nó là một số dương.
+
+Trở lại với biểu thức $$Real(F)$$ (phần thực được tính bởi tích chuỗi thời gian với hàm $$cos$$ và tổng của chúng). Nếu chuỗi thời gian có chứa thành phần $$cos$$ có cùng một tần số với hàm $$cos$$ thì thành phần đó sẽ đóng góp một giá trị khác không vào kết quả tổng. Vì vậy phần thực của sự chuyển đổi tại tần số đó sẽ khác 0.
+
+**Kết quả của tích hàm $$sin$$ và hàm $$cos$$**<br>
+Bây giờ sẽ tính tiếp hàm thứ ba là tích giữa hàm $$sin$$ và hàm $$cos$$ tại cùng một tần số. Kết quả đạt được như _Hình 6_.
+
+![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9NkxmWTgtejhET1k "Product sin and cos")<br>
+_Hình 6_
+
+Đường màu đỏ là hàm $$cos(x)$$, đường màu xanh lá cây là hàm $$sin(x)$$ còn đường màu xanh dương là hàm tích giữa $$sin(x)$$ và $$cos(x)$$.
+
+Nếu tính tổng giá trị của đường màu xanh dương với số chẵn chu kỳ thì nó sẽ bằng 0.
+
+Vì vậy với $$Real(F)$$ chỉ đo thành phần $$cos$$ trong chuỗi thời gian ở một tần số cụ thể và với $$Imag(F)$$ chỉ đo thành phần $$sin$$ trong chuỗi thời gian có cùng tần số.
+
+Biểu thức $$Real(F)$$ blablabla...
+
 **Nguồn**<br>
 [Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}
