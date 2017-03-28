@@ -13,7 +13,7 @@ Bài viết này sẽ giới thiệu tổng quan về tiến trình xử lý tí
 Với mục đích của bài viết thì ta có thể hiểu rằng chuỗi thời gian là tập của các giá trị mẫu được lấy từ hàm liên tục tăng đều theo thời gian trong một khoảng thời gian xác định. Ví dụ như bạn cứ cách mỗi phút đo nhiệt độ phòng một lần liên tục trong vòng 6 tiếng thì kết quả ta có được là một tập có 360 giá trị nhiệt độ phòng được đo và tập giá trị đó được xem như là một chuỗi giờ gian.
 
 **Tính toán**<br>
-Trong DSP chúng ta thường nhân hai chuỗi thời gian lại với nhau. Khi ta lấy chuỗi thời gian `$$x(n)$$` nhân với chuỗi thời gian $$y(n)$$ ta được một chuỗi thời gian mới cọi là $$w(n)$$.
+Trong DSP chúng ta thường nhân hai chuỗi thời gian lại với nhau. Khi ta lấy chuỗi thời gian $$x(n)$$ nhân với chuỗi thời gian $$y(n)$$ ta được một chuỗi thời gian mới cọi là $$w(n)$$.
 
 Thường thì các công việc tính toán trong DSP không có gì phức tạp hơn việc lấy số trung bình trong chuỗi kết quả của tích hai chuỗi thời gian.
 
@@ -82,12 +82,10 @@ Vì giải thuật DFT dễ hiểu hơn FFT nên chúng ta sẽ tập trung gi�
 **DFT**<br>
 Sau đây là các biểu thức cần phải đánh giá để xác định nội dung phổ tần số của chuỗi thời gian tại tần số **F**
 
-```
 $$Real(F) = \sum_{n = 0}^{N - 1} x(n).cos(2\pi .F.n)$$<br>
 $$Imag(F) = \sum_{n = 0}^{N - 1} x(n).sin(2\pi .F.n)$$<br>
-$$ComplexAmplitude(F) = Real(F) - j.Imag(F)$$<br>
+$$ComplexAmplitude(F) = Real(F) - i.Imag(F)$$<br>
 $$Power(F) = Real(F).Real(F) + Imag(F).Imag(F)$$
-```
 
 Trước hết bạn cần nắm một vài thứ, Đầu tiên bạn có một chuỗi thời gian $$x(n)$$, bạn có thể xác định chuỗi thời gian có bao gồm thành phần $$sin$$ hoặc $$cos$$ tại tần số $$F$$ cách các bước sau:
 
@@ -98,7 +96,21 @@ Trước hết bạn cần nắm một vài thứ, Đầu tiên bạn có một 
 - Ta xem các giá trị $$Real(F)$$ và $$Imag(F)$$ là các phần thực và phần ảo của số phức.
 - Ta xem tổng của bình phương phần thực và phần ảo đại diện cho lũy thừa tại tần số $$F$$ trong chuỗi thời gian.
 
-Về cơ bản thì chỉ có thế. Với mỗi tần số mà bạn quan tâm, bạn sẽ áp dụng quá trình trên để tính ra được một số phức `$$Real(F) - j.Imag(F)$$` đại diện cho thành phần của tần số trong chuỗi thời gian.
+Về cơ bản thì chỉ có thế. Với mỗi tần số mà bạn quan tâm, bạn sẽ áp dụng quá trình trên để tính ra được một số phức $$Real(F) - i.Imag(F)$$ đại diện cho thành phần của tần số trong chuỗi thời gian.
+
+Tương tự, bạn cũng có thể tính được tổng bình phương của phần thực và phần ảo và coi đó là thước đo lũy thừa tại tần số đó trong chuỗi thời gian.<br>
+(_Đây là giá trị được hiển thị bởi một trong những thanh sáng trên thiết bị lọc tần số._)
+
+Thông thường chúng ta quan tâm nhầu tần số nên sẽ lặp lại các bước trên với mỗi tần số chúng ta quan tâm.
+(_Điều này sẽ tạo ra các tập giá trị được hiển thị trên tất cả các cột sáng của bộ lọc tần số._)
+
+Ta có một vài hệ thức lượng giác sau:
+
+$$sin(a).sin(b)=\frac{cos(a-b)-cos(a+b)}{2}$$<br>
+$$cos(a).cos(b)=\frac{cos(a-b)+cos(a+b)}{2}$$<br>
+$$sin(a).cos(b)=\frac{sin(a+b)+sin(a-b)}{2}$$
+
+Mặc dù các hệ thức trên áp dụng cho tích của $$cos$$ và $$sin$$ với góc $$a$$ và $$b$$, đây là hệ thức đơn gian để mở rộng và áp dụng cho tính toán với chuỗi thời gian gồm có hàm $$cos$$ và $$sin$$.
 
 **Nguồn**<br>
 [Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}
