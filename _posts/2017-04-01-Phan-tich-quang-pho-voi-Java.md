@@ -82,10 +82,19 @@ Vì giải thuật DFT dễ hiểu hơn FFT nên chúng ta sẽ tập trung gi�
 **DFT**<br>
 Sau đây là các biểu thức cần phải đánh giá để xác định nội dung phổ tần số của chuỗi thời gian tại tần số **F**
 
-$$Real(F) = \sum_{n = 0}^{N - 1} x(n).cos(2\pi .F.n)$$
-$$Imag(F) = \sum_{n = 0}^{N - 1} x(n).sin(2\pi .F.n)$$
-$$ComplexAmplitude(F) = Real(F) - j.Imag(F)$$
+$$Real(F) = \sum_{n = 0}^{N - 1} x(n).cos(2\pi .F.n)$$<br>
+$$Imag(F) = \sum_{n = 0}^{N - 1} x(n).sin(2\pi .F.n)$$<br>
+$$ComplexAmplitude(F) = Real(F) - j.Imag(F)$$<br>
 $$Power(F) = Real(F).Real(F) + Imag(F).Imag(F)$$
+
+Trước hết bạn cần nắm một vài thứ, Đầu tiên bạn có một chuỗi thời gian $$x(n)$$, bạn có thể xác định chuỗi thời gian có bao gồm thành phần $$sin$$ hoặc $$cos$$ tại tần số $$F$$ cách các bước sau:
+
+* Tạo một chuỗi thời gian mới $$cos(n)$$, đây là một hàm $$cos$$ với tần số $$F$$.
+- ạo một chuỗi thời gian mới khác $$sin(n)$$ là một hàm $$sin$$ với tần số $$F$$.
+- Nhân $$x(n)$$ với $$cos(n)$$ sau đó tính tổng của các kết quả và gọi nó là $$Real(F)$$. Đây là ước tính của biên độ(nếu có) của thành phần $$cos$$ với tần số phù hợp trong chuỗi thời gian $$x(n)$$.
+- Nhân $$x(n)$$ với $$sin(n)$$ sau đó tính tổng của các kết quả và gọi nó là $$Imag(F)$$. Đây là ước tính của biên độ(nếu có) của thành phần $$sin$$ với tần số phù hợp trong chuỗi thời gian $$x(n)$$.
+- Ta xem các giá trị $$Real(F)$$ và $$Imag(F)$$ là các phần thực và phần ảo của số phức.
+- Ta xem tổng của bình phương phần thực và phần ảo đại diện cho lũy thừa tại tần số $$F$$ trong chuỗi thời gian.
 
 **Nguồn**<br>
 [Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}
