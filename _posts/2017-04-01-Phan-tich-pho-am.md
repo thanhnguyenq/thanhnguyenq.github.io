@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Phân tích phổ âm với java
+title: Phân tích phổ âm
 date: 2017-04-01
-category: Java
-tag: [java, tutorial]
+category: Algorithm
+tag: [DSP, algorithm]
 external: "mathjax"
 ---
 Bài viết này sẽ giới thiệu tổng quan về tiến trình xử lý tín hiệu số được gọi là Digital Signal Processing(DSP)
@@ -45,6 +45,8 @@ _Hình 3_
 Ta so sánh _Hình 2_ với _Hình 3_, ta thấy hai hình có chu kỳ giống nhau nhưng _Hình 3_ có thiên hướng tiến về giá trị dương còn _Hình 2_ thì lấy đường ngang làm tâm. Ta cũng thấy rằng _Hình 2_ có diện tích dưới đường cong bằng không trong khi đó _Hình 3_ có diện tích là một số dương. -->
 
 ## Fourier Transform
+> Bất kỳ hàm có chu kỳ nào có thể được viết lại như tổng có thêm trọng số của hàm sin và cos của các tần số khác nhau. <br> _**Jean Baptiste Fourier**_
+
 Có một quy trình toán học được biết với cái tên chuyển đổi Fourier, nó được dùng để chuyển đổi [tuyến tính](https://vi.wikipedia.org/wiki/Tuy%E1%BA%BFn_t%C3%ADnh "tuyến tính"){:target="_blank"} thông tin qua lại giữa hai miền khác nhau. Thông tin có thể hiểu như là tập các số phức trong một hoặc cả hai miền.
 
 Các miền ở đây có thể đại diện cho nhiều thứ khác nhau. Ví dụ như ta có một miền đại diện cho các điểm ảnh(pixel) trong một tấm ảnh và có một miền khác đại diện cho các thao tác liên quan đến bức ảnh. Còn trong DSP, các miền thường được gọi là miền thời gian (time domain) và miền tần số (frequency domain).
@@ -131,7 +133,7 @@ Giờ chúng ta hãy áp dụng các hàm trên, ví dụ như ta có một chu�
 ![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9ZGdEMHFkcXQ3dG8 "Product two sin")<br>
 _Hình 4_
 
-Đường màu đỏ thể hiện hàm $$sin(x)$$ còn đường màu xanh là kết quả của phép nhân giữa $$sin(X)$$ và $$sin(x)$$.
+Đường màu đỏ thể hiện hàm $$sin(x)$$ còn đường màu xanh là kết quả của phép nhân giữa $$sin(x)$$ và $$sin(x)$$.
 
 Bây giờ nếu tính tổng giá trị của đường màu xanh với số chẵn chu kỳ thì tổng của nó sẽ khác 0 hay cũng có thể nói nó là một số dương.
 
@@ -143,7 +145,7 @@ Cũng như trên, bây giờ ta sẽ tính theo hàm thứ hai. Trường hợp 
 ![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9NmJ4Y245Sm9SdWM "Product two cos")<br>
 _Hình 5_
 
-Đường màu đỏ thể hiện hàm $$cos(x)$$ còn đường màu xanh là kết quả của phép nhân giữa $$cos(X)$$ và $$cos(x)$$.
+Đường màu đỏ thể hiện hàm $$cos(x)$$ còn đường màu xanh là kết quả của phép nhân giữa $$cos(x)$$ và $$cos(x)$$.
 
 Bây giờ nếu tính tổng giá trị của đường màu xanh với số chẵn chu kỳ thì tổng của nó sẽ khác 0 hay cũng có thể nói nó là một số dương.
 
@@ -161,7 +163,22 @@ Nếu tính tổng giá trị của đường màu xanh dương với số chẵ
 
 Vì vậy với $$Real(F)$$ chỉ đo thành phần $$cos$$ trong chuỗi thời gian ở một tần số cụ thể và với $$Imag(F)$$ chỉ đo thành phần $$sin$$ trong chuỗi thời gian có cùng tần số.
 
-Biểu thức $$Real(F)$$ blablabla...
+Biểu thức $$Real(F)$$ không cho ra kết quả khác 0 do thành phần $$sin$$ trong chuỗi thời gian có cùng tần số. Biểu thức $$Imag(F)$$ cũng không cho ra kết quả khác 0 do thành phần $$cos$$.
+
+Do đó, ở một tần số cụ thể thì sự tồn tại của thành phần $$cos$$ trong chuỗi thời gian tạo ra kết quả thực, còn thành phần $$sin$$ tạo ra kết quả ảo.
+
+**Thực tế** thì thành phần $$sin$$ tạo bởi chuỗi thời gian sẽ không phải là hàm $$sin$$ hay $$cos$$. Nó chỉ có hình dạng giống nhau nhưng tại một điểm xác định thì sẽ có giá trị khác nhau. Tuy nhiên nó chỉ ra rằng các hàm dạng hình $$sin$$ có thể được đại diện bằng tổng của hàm $$sin$$ và $$cos$$ có biên độ khác nhau.
+
+Ở trên ta đang xét trên điều kiện là tần số của $$sin$$, $$cos$$ khớp với tần số của $$sin$$, $$cos$$ trong chuỗi thời gian. Vậy nếu như tần số không khớp nhau thì sao ?
+
+Ta xem lại các biểu thức ở trên:
+
+$$\begin{align}f(n)&=sin(a.n).sin(b.n)\\&=\frac{cos((a-b).n)-cos((a+b).n)}{2}\end{align}$$<br>
+$$\begin{align}f(n)&=cos(a.n).cos(b.n)\\&=\frac{cos((a-b).n)+cos((a+b).n)}{2}\end{align}$$<br>
+$$\begin{align}f(n)&=sin(a.n).cos(b.n)\\&=\frac{sin((a+b).n)+sin((a-b).n)}{2}\end{align}$$
+
+Chúng ta thấy khi a khác b thì kết quả của tích hai $$sin$$ hoặc $$cos$$ sẽ là tổng của hai $$sin$$ hoặc $$cos$$ khác. Tổng giá trị qua số chẵn chu kỳ luôn luôn bằng 0.
 
 **Nguồn**<br>
-[Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}
+[Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}<br>
+[Phân tích Fourier](http://www.math.hcmuns.edu.vn/~ptbao/BHXLA/5.pdf "hcmuns"){:target="_blank"}
