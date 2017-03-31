@@ -179,6 +179,18 @@ $$\begin{align}f(n)&=sin(a.n).cos(b.n)\\&=\frac{sin((a+b).n)+sin((a-b).n)}{2}\en
 
 Chúng ta thấy khi a khác b thì kết quả của tích hai $$sin$$ hoặc $$cos$$ sẽ là tổng của hai $$sin$$ hoặc $$cos$$ khác. Tổng giá trị qua số chẵn chu kỳ luôn luôn bằng 0.
 
+Với mỗi cặp giá trị $$a$$, $$b$$ thì tần số của hàm dạng sin trong hàm kết quả sẽ là $$a+b$$ và $$a-b$$.<br>
+(_Chúng ta thường gọi là tần tổng và tần số khác nhau_)
+
+Thực tế thì nếu tần số tổng và tần số khác nhau không phải là bội của nhau thì ta sẽ không thể phân tích trên số chẵn chu kỳ của đường hình sin. Do đó một hoặc cả hai sẽ góp một lượng nhỏ giá trị cho tổng của kết quả trong một chu kỳ, ta gọi đây là một dạng lỗi đo lường xảy ra khi thực hiện phân tích phổ tần số dùng phương pháp chuyển đổi Fourier.
+
+Bây giờ chúng ta xem kết quả của việc nhân hai hàm có tần số khác nhau là $$sin(1.8x)$$ vả $$sin(2.2x)$$.
+
+![alt text](https://docs.google.com/uc?export=download&id=0B9ViryDHWtu9ZmxqbzRDbnppa2c "Product sin and cos")<br>
+_Hình 7_
+
+Xét từ _Hình 7_, phân tích kết quả từ -7 đến 7 với chính xác là 9 chu kỳ của thành phần tần số cao. Vì vậy các thành phần này đóng góp rất ít(hoặc không) đến kết quả. và nếu chúng ta nhìn tổng thể thì có ít nhất 1 chu kỳ hoàn chỉnh của tần số thấp, nó góp phần đưa ra kết quả bị lỗi đo lường
+
 **Nguồn**<br>
 [Fun with Java, How and Why Spectral Analysis Works](http://www.developer.com/java/other/article.php/3374611 "Developer.com"){:target="_blank"}<br>
 [Phân tích Fourier](http://www.math.hcmuns.edu.vn/~ptbao/BHXLA/5.pdf "hcmuns"){:target="_blank"}
