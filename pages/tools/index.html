@@ -4,7 +4,7 @@ title: Tools
 ---
 <input id="src" class="search-box" placeholder="Source video" type="url">
 <button type="button" onclick="onPlay();">Play</button>
-<video id="video" src="" controls style="display:none"></video>
+<video id="video" src="" controls style="display:none;max-width:100%"></video>
 <script type="text/javascript">
   var onPlay = () => {
     var video = document.getElementById('video');
