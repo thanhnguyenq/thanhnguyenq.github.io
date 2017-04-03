@@ -25,7 +25,7 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br>
-<p>Version 0.0.3</p>
+<p>Version 0.0.4</p>
 <style media="screen">
 #minesweeper {
   max-width: 100%;
@@ -153,7 +153,7 @@ function markNumber(arr) {
 
 function discover(row, col) {
   // Is discovered?
-  if(arrMark[row][col] == -2) {
+  if(arrMark[row][col] == -2 || arrMark[row][col] == -3 || arrMark[row][col] == -4) {
     return;
   }
   var table = $("#minesweeper")[0];
@@ -216,19 +216,17 @@ function countBomb(arr) {
 }
 
 function checkWin() {
-  var res = 0;
   for (var i = 0; i < 20; i++) {
     for (var j = 0; j < 20; j++) {
       if(arrMark[i][j] == -2 || arrMark[i][j] == -3) {
-        res++;
+        if(arr[i][j] != -1) {
+          return;
+        }
       }
     }
   }
-  res = 400 - res;
-  if(bomb == res) {
-    alert("You win!");
-    restart();
-  }
+  alert("You win!");
+  restart();
 }
 
 function clearContent() {
@@ -247,6 +245,7 @@ function restart() {
   arr = markNumber(arr);
   arrMark = initArr();
   bomb = countBomb(arr);
+  clearContent();
   $("#minesweeper td").css("background", "#666");
 }
 window.setInterval(checkWin, 500);
