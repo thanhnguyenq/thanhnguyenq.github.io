@@ -3,8 +3,8 @@ layout: default
 title: MineSweeper
 ---
 <table id="minesweeper" style="width:100%">
-  <tr><td></td><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-  <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -15,7 +15,7 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <style media="screen">
-  
+
 </style>
 <script type="text/javascript">
 var arr = initArr();
@@ -48,7 +48,7 @@ function initArr() {
 };
 
 // Mark number around mine
-var markNumber(arr) {
+function markNumber(arr) {
   for (var i = 0; i < 10; i++) {
     for (var j = 0; j < 10; j++) {
       if(arr[i][j] == -1) {
