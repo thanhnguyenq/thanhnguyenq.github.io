@@ -25,7 +25,7 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br>
-<p>Version 0.0.7</p>
+<p>Version 0.0.8</p>
 <style media="screen">
 #minesweeper {
   max-width: 100%;
@@ -110,9 +110,13 @@ function initArr() {
   for (var i = 0; i < 20; i++) {
     for (var j = 0; j < 20; j++) {
       arr[i][j] = 0;
+	  if(Math.floor(Math.random() * 20) == 6 || Math.floor(Math.random() * 20) == 19) {
+		arr[i][j] = -1;
+	  }
     }
     arr[i][Math.floor(Math.random() * 20)] = -1;
     arr[i][Math.floor(Math.random() * 20)] = -1;
+	arr[i][Math.floor(Math.random() * 20)] = -1;
   }
   return arr;
 };
