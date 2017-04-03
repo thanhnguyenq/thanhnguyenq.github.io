@@ -25,7 +25,7 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br>
-<p>Version 0.0.8</p>
+<p>Version 0.0.9</p>
 <style media="screen">
 #minesweeper {
   max-width: 100%;
@@ -57,11 +57,24 @@ title: MineSweeper
 // disable default right click
 document.oncontextmenu = function() {return false;};
 
+var arr = initArr();
+arr = markNumber(arr);
+var arrMark = initArr();
+var bomb = countBomb(arr);
+boolean flag = true;
+
 $("#minesweeper td").click(function() {
   var col = $(this).parent().children().index($(this));
   var row = $(this).parent().parent().children().index($(this).parent());
-  if(arrMark[row][col] == -3 && arrMark[row][col] == -4) {
+  if(arrMark[row][col] == -3 || arrMark[row][col] == -4) {
     return;
+  }
+  if(flag) {
+	flag != flag;
+	while(arr[row][col] != 0) {
+		arr = initArr();
+	}
+	bomb = countBomb(arr);
   }
   if(arr[row][col] != -1) {
     if(arr[row][col] != 0) {
@@ -97,11 +110,6 @@ $("#minesweeper td").mousedown(function(e){
   return true;
 });
 
-var arr = initArr();
-arr = markNumber(arr);
-var arrMark = initArr();
-var bomb = countBomb(arr);
-
 function initArr() {
   var arr = new Array(20);
   for (var i = 0; i < 20; i++) {
@@ -115,8 +123,8 @@ function initArr() {
 	  }
     }
     arr[i][Math.floor(Math.random() * 20)] = -1;
-    arr[i][Math.floor(Math.random() * 20)] = -1;
 	arr[i][Math.floor(Math.random() * 20)] = -1;
+    arr[i][Math.floor(Math.random() * 20)] = -1;
   }
   return arr;
 };
@@ -259,6 +267,7 @@ function restart() {
   arrMark = initArr();
   bomb = countBomb(arr);
   clearContent();
+  flag = true;
   $("#minesweeper td").css("background", "#666");
 }
 window.setInterval(checkWin, 500);
