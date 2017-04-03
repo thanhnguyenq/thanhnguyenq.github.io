@@ -24,6 +24,8 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
+<br>
+Version 0.0.1
 <style media="screen">
 #minesweeper {
   max-width: 100%;
@@ -211,7 +213,7 @@ function checkWin() {
       }
     }
   }
-  res = 200 - res;
+  res = 400 - res;
   if(bomb == res) {
     alert("You win!");
     restart();
