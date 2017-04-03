@@ -90,7 +90,95 @@ $("#minesweeper td").click(function() {
     restart();
   }
 });
-
+$("#minesweeper td").dblclick(function(){
+    var col = $(this).parent().children().index($(this));
+	var row = $(this).parent().parent().children().index($(this).parent());
+	if(arrMark[row][col] != -2 || arr[row][col] == 0) {
+		return;
+	}
+	var bombCount = 0;
+	
+	
+	// Top Left
+  if(arr[row - 1] != null && arr[row - 1][col - 1] != null && (arr[row - 1][col - 1] == -1 || arrMark[row - 1][col - 1] == -3)) {
+    bombCount++;
+  }
+  // Top
+  if(arr[row - 1] != null && arr[row - 1][col] != null && (arr[row - 1][col] == -1 || arrMark[row - 1][col] == -3)) {
+    bombCount++;
+  }
+  // Top Right
+  if(arr[row - 1] != null && arr[row - 1][col + 1] != null && (arr[row - 1][col + 1] == -1 || arrMark[row - 1][col + 1] == -3)) {
+    bombCount++;
+  }
+  // Right
+  if(arr[row] != null && arr[row][col + 1] != null && (arr[row][col + 1] == -1 || arrMark[row][col + 1] == -3)) {
+    bombCount++;
+  }
+  // Bottom Right
+  if(arr[row + 1] != null && arr[row + 1][col + 1] != null && (arr[row + 1][col + 1] == -1 || arrMark[row + 1][col + 1] == -3)) {
+    bombCount++;
+  }
+  // Bottom
+  if(arr[row + 1] != null && arr[row + 1][col] != null && (arr[row + 1][col] == -1 || arrMark[row + 1][col] == -3)) {
+    bombCount++;
+  }
+  // Bottom Left
+  if(arr[row + 1] != null && arr[row + 1][col - 1] != null && (arr[row + 1][col - 1] == -1 || arrMark[row + 1][col - 1] == -3)) {
+    bombCount++;
+  }
+  // Left
+  if(arr[row] != null && arr[row][col - 1] != null && (arr[row][col - 1] == -1 || arrMark[row][col - 1] == -3)) {
+    bombCount++;
+  }
+  
+  
+  /*CHECK*/
+ if(bombCount == arr[row][col]) {
+ var table = $("#minesweeper")[0];
+ var cell;
+	// Top Left
+  if(arr[row - 1] != null && arr[row - 1][col - 1] != null && (arr[row - 1][col - 1] != -1 || arrMark[row - 1][col - 1] != -3)) {
+  cell = table.rows[row - 1].cells[col - 1];
+  $(cell).trigger("click");
+  }
+  // Top
+  if(arr[row - 1] != null && arr[row - 1][col] != null && (arr[row - 1][col] != -1 || arrMark[row - 1][col] != -3)) {
+    cell = table.rows[row - 1].cells[col];
+  $(cell).trigger("click");
+  }
+  // Top Right
+  if(arr[row - 1] != null && arr[row - 1][col + 1] != null && (arr[row - 1][col + 1] != -1 || arrMark[row - 1][col + 1] != -3)) {
+    cell = table.rows[row - 1].cells[col + 1];
+  $(cell).trigger("click");
+  }
+  // Right
+  if(arr[row] != null && arr[row][col + 1] != null && (arr[row][col + 1] != -1 || arrMark[row][col + 1] != -3)) {
+    cell = table.rows[row].cells[col + 1];
+  $(cell).trigger("click");
+  }
+  // Bottom Right
+  if(arr[row + 1] != null && arr[row + 1][col + 1] != null && (arr[row + 1][col + 1] != -1 || arrMark[row + 1][col + 1] != -3)) {
+    cell = table.rows[row + 1].cells[col + 1];
+	$(cell).trigger("click");
+  }
+  // Bottom
+  if(arr[row + 1] != null && arr[row + 1][col] != null && (arr[row + 1][col] != -1 || arrMark[row + 1][col] != -3)) {
+    cell = table.rows[row + 1].cells[col];
+  $(cell).trigger("click");
+  }
+  // Bottom Left
+  if(arr[row + 1] != null && arr[row + 1][col - 1] != null && (arr[row + 1][col - 1] != -1 || arrMark[row + 1][col - 1] != -3)) {
+    cell = table.rows[row + 1].cells[col - 1];
+  $(cell).trigger("click");
+  }
+  // Left
+  if(arr[row] != null && arr[row][col - 1] != null && (arr[row][col - 1] != -1 || arrMark[row][col - 1] != -3)) {
+    cell = table.rows[row].cells[col - 1];
+	$(cell).trigger("click");
+  }
+ }
+});
 $("#minesweeper td").mousedown(function(e){
   if( e.button == 2 ) {
     // Right mouse
