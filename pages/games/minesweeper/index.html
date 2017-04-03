@@ -45,6 +45,9 @@ title: MineSweeper
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
+// disable default right click
+document.oncontextmenu = function() {return false;};
+
 $("#minesweeper td").click(function() {
   var col = $(this).parent().children().index($(this));
   var row = $(this).parent().parent().children().index($(this).parent());
@@ -59,28 +62,24 @@ $("#minesweeper td").click(function() {
     }
   } else {
     alert("You lose!");
-    arr = initArr();
-    arr = markNumber(arr);
-    arrMark = initArr();
-    $("#minesweeper td").css("background", "#666")
+    restart();
   }
 });
+
+$("#minesweeper td").mousedown(function(e){
+   if( e.button == 2 ) {
+     // Right mouse
+     console.log("right");
+     return false;
+   }
+   return true;
+ });
 
 var arr = initArr();
 arr = markNumber(arr);
 var arrMark = initArr();
+var bomb = countBomb(arr);
 
-// var table = document.getElementById("minesweeper");
-// for (var i = 0, row; row = table.rows[i]; i++) {
-//   //iterate through rows
-//   //rows would be accessed using the "row" variable assigned in the for loop
-//   for (var j = 0, col; col = row.cells[j]; j++) {
-//     //iterate through columns
-//     //columns would be accessed using the "col" variable assigned in the for loop
-//     // col.innerHTML = arr[i][j];
-//   }
-// }
-// Initialize array
 function initArr() {
   var arr = new Array(20);
   for (var i = 0; i < 20; i++) {
@@ -138,6 +137,7 @@ function markNumber(arr) {
   }
   return arr;
 };
+
 function discover(row, col) {
   // Is discovered?
   if(arrMark[row][col] == -2) {
@@ -189,4 +189,41 @@ function discover(row, col) {
     discover(row, col - 1);
   }
 };
+
+function countBomb(arr) {
+  var res = 0;
+  for (var i = 0; i < 20; i++) {
+    for (var j = 0; j < 20; j++) {
+      if(arr[i][j] == -1) {
+        res++;
+      }
+    }
+  }
+  return res;
+}
+
+function checkWin() {
+  var res = 0;
+  for (var i = 0; i < 20; i++) {
+    for (var j = 0; j < 20; j++) {
+      if(arrMark[i][j] == -2) {
+        res++;
+      }
+    }
+  }
+  res = 200 - res;
+  if(bomb == res) {
+    alert("You win!");
+    restart();
+  }
+}
+
+function restart() {
+  arr = initArr();
+  arr = markNumber(arr);
+  arrMark = initArr();
+  bomb = countBomb(arr);
+  $("#minesweeper td").css("background", "#666");
+}
+window.setInterval(checkWin, 500);
 </script>
