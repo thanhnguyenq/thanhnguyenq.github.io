@@ -31,12 +31,12 @@ title: MineSweeper
 }
 #minesweeper tr td{
   width: 25px;
-	height: 25px;
-	line-height: 25px;
+  height: 25px;
+  line-height: 25px;
   display: inline-block;
-	min-width: unset;
-	color: #666;
-	background: #666;
+  min-width: unset;
+  color: #666;
+  background: #666;
 }
 #minesweeper tr td:hover {
   background: #666;
@@ -50,13 +50,19 @@ $("#minesweeper td").click(function() {
   var row = $(this).parent().parent().children().index($(this).parent());
 
   if(arr[row][col] != -1) {
-	if(arr[row][col] != 0) {
-		$(this).css("background", "unset");
-		arrMark[row][col] = -2;
-		$(this).html(arr[row][col]);
-	} else {
-		discover(row, col);
-	}
+    if(arr[row][col] != 0) {
+      $(this).css("background", "unset");
+      arrMark[row][col] = -2;
+      $(this).html(arr[row][col]);
+    } else {
+      discover(row, col);
+    }
+  } else {
+    alert("You lose!");
+    arr = initArr();
+    arr = markNumber(arr);
+    arrMark = initArr();
+    $("#minesweeper td").css("background", "#666")
   }
 });
 
@@ -133,52 +139,54 @@ function markNumber(arr) {
   return arr;
 };
 function discover(row, col) {
-	// Is discovered?
-	if(arrMark[row][col] == -2) {
-		return;
-	}
-	var table = $("#minesweeper")[0];
-	var cell = table.rows[row].cells[col];
-	var $cell = $(cell);
-	$cell.css("background", "unset");
-	arrMark[row][col] = -2;
-	$cell.html(arr[row][col]);
+  // Is discovered?
+  if(arrMark[row][col] == -2) {
+    return;
+  }
+  var table = $("#minesweeper")[0];
+  var cell = table.rows[row].cells[col];
+  var $cell = $(cell);
+  $cell.css("background", "unset");
+  arrMark[row][col] = -2;
+  if (arr[row][col] != 0) {
+    $cell.html(arr[row][col]);
+  }
 
-	if(arr[row][col] != 0) {
-		return;
-	}
+  if(arr[row][col] != 0) {
+    return;
+  }
 
-	// Top Left
-	if(arr[row - 1] != null && arr[row - 1][col - 1] != null && arr[row - 1][col - 1] != -1) {
-	  discover(row - 1, col - 1);
-	}
-	// Top
-	if(arr[row - 1] != null && arr[row - 1][col] != null && arr[row - 1][col] != -1) {
-	  discover(row - 1, col);
-	}
-	// Top Right
-	if(arr[row - 1] != null && arr[row - 1][col + 1] != null && arr[row - 1][col + 1] != -1) {
-	  discover(row - 1, col + 1);
-	}
-	// Right
-	if(arr[row] != null && arr[row][col + 1] != null && arr[row][col + 1] != -1) {
-	  discover(row, col + 1);
-	}
-	// Bottom Right
-	if(arr[row + 1] != null && arr[row + 1][col + 1] != null && arr[row + 1][col + 1] != -1) {
-	  discover(row + 1, col + 1);
-	}
-	// Bottom
-	if(arr[row + 1] != null && arr[row + 1][col] != null && arr[row + 1][col] != -1) {
-	  discover(row + 1, col);
-	}
-	// Bottom Left
-	if(arr[row + 1] != null && arr[row + 1][col - 1] != null && arr[row + 1][col - 1] != -1) {
-	  discover(row + 1, col - 1);
-	}
-	// Left
-	if(arr[row] != null && arr[row][col - 1] != null && arr[row][col - 1] != -1) {
-	  discover(row, col - 1);
-	}
+  // Top Left
+  if(arr[row - 1] != null && arr[row - 1][col - 1] != null && arr[row - 1][col - 1] != -1) {
+    discover(row - 1, col - 1);
+  }
+  // Top
+  if(arr[row - 1] != null && arr[row - 1][col] != null && arr[row - 1][col] != -1) {
+    discover(row - 1, col);
+  }
+  // Top Right
+  if(arr[row - 1] != null && arr[row - 1][col + 1] != null && arr[row - 1][col + 1] != -1) {
+    discover(row - 1, col + 1);
+  }
+  // Right
+  if(arr[row] != null && arr[row][col + 1] != null && arr[row][col + 1] != -1) {
+    discover(row, col + 1);
+  }
+  // Bottom Right
+  if(arr[row + 1] != null && arr[row + 1][col + 1] != null && arr[row + 1][col + 1] != -1) {
+    discover(row + 1, col + 1);
+  }
+  // Bottom
+  if(arr[row + 1] != null && arr[row + 1][col] != null && arr[row + 1][col] != -1) {
+    discover(row + 1, col);
+  }
+  // Bottom Left
+  if(arr[row + 1] != null && arr[row + 1][col - 1] != null && arr[row + 1][col - 1] != -1) {
+    discover(row + 1, col - 1);
+  }
+  // Left
+  if(arr[row] != null && arr[row][col - 1] != null && arr[row][col - 1] != -1) {
+    discover(row, col - 1);
+  }
 };
 </script>
