@@ -25,7 +25,7 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br>
-<p>Version 0.0.4</p>
+<p>Version 0.0.5</p>
 <style media="screen">
 #minesweeper {
   max-width: 100%;
@@ -39,6 +39,13 @@ title: MineSweeper
   min-width: unset;
   color: #666;
   background: #666;
+  -webkit-touch-callout: none; /* iOS Safari */
+   -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Firefox */
+       -ms-user-select: none; /* Internet Explorer/Edge */
+           user-select: none; /* Non-prefixed version, currently
+                                 supported by Chrome and Opera */
 }
 #minesweeper tr td:hover {
   background: #666;
@@ -222,6 +229,8 @@ function checkWin() {
         if(arr[i][j] != -1) {
           return;
         }
+      } else {
+        return;
       }
     }
   }
