@@ -25,7 +25,7 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br>
-<p>Version 0.0.5</p>
+<p>Version 0.0.6</p>
 <style media="screen">
 #minesweeper {
   max-width: 100%;
@@ -63,6 +63,9 @@ $("#minesweeper td").click(function() {
 
   if(arr[row][col] != -1) {
     if(arr[row][col] != 0) {
+      if(arrMark[row][col] == -3 && arrMark[row][col] == -4) {
+        return;
+      }
       $(this).css("background", "unset");
       arrMark[row][col] = -2;
       $(this).html(arr[row][col]);
@@ -225,7 +228,8 @@ function countBomb(arr) {
 function checkWin() {
   for (var i = 0; i < 20; i++) {
     for (var j = 0; j < 20; j++) {
-      if(arrMark[i][j] == -2 || arrMark[i][j] == -3) {
+      if(arrMark[i][j] == -2){continue;}
+      if(arrMark[i][j] == -3) {
         if(arr[i][j] != -1) {
           return;
         }
