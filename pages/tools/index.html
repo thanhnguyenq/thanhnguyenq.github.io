@@ -6,7 +6,7 @@ title: Tools
 <button type="button" onclick="onPlay();">Play</button>
 <video id="video" src="" controls style="display:none;max-width:100%"></video>
 <script type="text/javascript">
-  var onPlay = () => {
+  function onPlay() {
     var video = document.getElementById('video');
     video.setAttribute('src', document.getElementById('src').value);
     video.style.display = "block";
