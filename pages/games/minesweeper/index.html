@@ -229,6 +229,8 @@ function checkWin() {
     for (var j = 0; j < 20; j++) {
       if(arrMark[i][j] == -2 || arr[i][j] == -1){
         continue;
+      } else {
+        return;
       }
     }
   }
