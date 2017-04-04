@@ -25,7 +25,7 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br>
-<p>Version 0.1.0</p>
+<p>Version 0.1.1</p>
 <style media="screen">
 #minesweeper {
   max-width: 100%;
@@ -242,19 +242,17 @@ function initArr() {
   for (var i = 0; i < 20; i++) {
     arr[i] = new Array(20);
   }
+  // Generate mines
+  for (var i = 0; i < 100; i++) {
+    var new_mine_row = Math.floor(Math.random() * 20);
+    var new_mine_col = Math.floor(Math.random() * 20);
+    arr[new_mine_row][new_mine_col] = -1;
+  }
   for (var i = 0; i < 20; i++) {
     for (var j = 0; j < 20; j++) {
-      arr[i][j] = 0;
-      if(Math.floor(Math.random() * 20) == 6 || Math.floor(Math.random() * 20) == 19 || Math.floor(Math.random() * 20) == 11) {
-        arr[i][j] = -1;
+      if(arr[i][j] != -1) {
+        arr[i][j] = 0;
       }
-    }
-    arr[i][Math.floor(Math.random() * 20)] = -1;
-    if(i % 5 == 0) {
-      arr[i][Math.floor(Math.random() * 20)] = -1;
-    }
-    if(i % 3 == 0) {
-      arr[i][Math.floor(Math.random() * 20)] = -1;
     }
   }
   return arr;
