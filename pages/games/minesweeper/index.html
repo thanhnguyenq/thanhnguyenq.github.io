@@ -25,13 +25,14 @@ title: MineSweeper
   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br>
-<p>Version 0.0.9</p>
+<p>Version 0.1.0</p>
 <style media="screen">
 #minesweeper {
   max-width: 100%;
   table-layout:fixed;
 }
 #minesweeper tr td{
+  cursor: default;
   width: 25px;
   height: 25px;
   line-height: 25px;
@@ -40,12 +41,12 @@ title: MineSweeper
   color: #666;
   background: #666;
   -webkit-touch-callout: none; /* iOS Safari */
-   -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-      -moz-user-select: none; /* Firefox */
-       -ms-user-select: none; /* Internet Explorer/Edge */
-           user-select: none; /* Non-prefixed version, currently
-                                 supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
 }
 #minesweeper tr td:hover {
   background: #666;
@@ -62,6 +63,7 @@ arr = markNumber(arr);
 var arrMark = initArr();
 var bomb = countBomb(arr);
 var flag = true;
+var isClear = false;
 
 $("#minesweeper td").click(function() {
   var col = $(this).parent().children().index($(this));
@@ -70,12 +72,12 @@ $("#minesweeper td").click(function() {
     return;
   }
   if(flag) {
-	flag = false;
-	while(arr[row][col] != 0) {
-		arr = initArr();
-		arr = markNumber(arr);
-	}
-	bomb = countBomb(arr);
+    flag = false;
+    while(arr[row][col] != 0) {
+      arr = initArr();
+      arr = markNumber(arr);
+    }
+    bomb = countBomb(arr);
   }
   if(arr[row][col] != -1) {
     if(arr[row][col] != 0) {
@@ -90,95 +92,131 @@ $("#minesweeper td").click(function() {
     restart();
   }
 });
+
+// double click
 $("#minesweeper td").dblclick(function(){
-    var col = $(this).parent().children().index($(this));
-	var row = $(this).parent().parent().children().index($(this).parent());
-	if(arrMark[row][col] != -2 || arr[row][col] == 0) {
-		return;
-	}
-	var bombCount = 0;
-	
-	
-	// Top Left
-  if(arr[row - 1] != null && arr[row - 1][col - 1] != null && (arr[row - 1][col - 1] == -1 || arrMark[row - 1][col - 1] == -3)) {
+  var col = $(this).parent().children().index($(this));
+  var row = $(this).parent().parent().children().index($(this).parent());
+  if(arrMark[row][col] != -2 || arr[row][col] == 0) {
+    return;
+  }
+  var bombCount = 0;
+
+  // Top Left
+  if(arr[row - 1] != null && arr[row - 1][col - 1] != null &&arrMark[row - 1][col - 1] == -3) {
     bombCount++;
   }
   // Top
-  if(arr[row - 1] != null && arr[row - 1][col] != null && (arr[row - 1][col] == -1 || arrMark[row - 1][col] == -3)) {
+  if(arr[row - 1] != null && arr[row - 1][col] != null && arrMark[row - 1][col] == -3) {
     bombCount++;
   }
   // Top Right
-  if(arr[row - 1] != null && arr[row - 1][col + 1] != null && (arr[row - 1][col + 1] == -1 || arrMark[row - 1][col + 1] == -3)) {
+  if(arr[row - 1] != null && arr[row - 1][col + 1] != null && arrMark[row - 1][col + 1] == -3) {
     bombCount++;
   }
   // Right
-  if(arr[row] != null && arr[row][col + 1] != null && (arr[row][col + 1] == -1 || arrMark[row][col + 1] == -3)) {
+  if(arr[row] != null && arr[row][col + 1] != null && arrMark[row][col + 1] == -3) {
     bombCount++;
   }
   // Bottom Right
-  if(arr[row + 1] != null && arr[row + 1][col + 1] != null && (arr[row + 1][col + 1] == -1 || arrMark[row + 1][col + 1] == -3)) {
+  if(arr[row + 1] != null && arr[row + 1][col + 1] != null && arrMark[row + 1][col + 1] == -3) {
     bombCount++;
   }
   // Bottom
-  if(arr[row + 1] != null && arr[row + 1][col] != null && (arr[row + 1][col] == -1 || arrMark[row + 1][col] == -3)) {
+  if(arr[row + 1] != null && arr[row + 1][col] != null && arrMark[row + 1][col] == -3) {
     bombCount++;
   }
   // Bottom Left
-  if(arr[row + 1] != null && arr[row + 1][col - 1] != null && (arr[row + 1][col - 1] == -1 || arrMark[row + 1][col - 1] == -3)) {
+  if(arr[row + 1] != null && arr[row + 1][col - 1] != null && arrMark[row + 1][col - 1] == -3) {
     bombCount++;
   }
   // Left
-  if(arr[row] != null && arr[row][col - 1] != null && (arr[row][col - 1] == -1 || arrMark[row][col - 1] == -3)) {
+  if(arr[row] != null && arr[row][col - 1] != null && arrMark[row][col - 1] == -3) {
     bombCount++;
   }
-  
-  
+
+
   /*CHECK*/
- if(bombCount == arr[row][col]) {
- var table = $("#minesweeper")[0];
- var cell;
-	// Top Left
-  if(arr[row - 1] != null && arr[row - 1][col - 1] != null && (arr[row - 1][col - 1] != -1 || arrMark[row - 1][col - 1] != -3)) {
-  cell = table.rows[row - 1].cells[col - 1];
-  $(cell).trigger("click");
+  if(bombCount == arr[row][col]) {
+    var table = $("#minesweeper")[0];
+    var cell;
+    // Top Left
+    if(arr[row - 1] != null && arr[row - 1][col - 1] != null && arrMark[row - 1][col - 1] != -3) {
+      cell = table.rows[row - 1].cells[col - 1];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+    // Top
+    if(arr[row - 1] != null && arr[row - 1][col] != null && arrMark[row - 1][col] != -3) {
+      cell = table.rows[row - 1].cells[col];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+    // Top Right
+    if(arr[row - 1] != null && arr[row - 1][col + 1] != null && arrMark[row - 1][col + 1] != -3) {
+      cell = table.rows[row - 1].cells[col + 1];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+    // Right
+    if(arr[row] != null && arr[row][col + 1] != null && arrMark[row][col + 1] != -3) {
+      cell = table.rows[row].cells[col + 1];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+    // Bottom Right
+    if(arr[row + 1] != null && arr[row + 1][col + 1] != null && arrMark[row + 1][col + 1] != -3) {
+      cell = table.rows[row + 1].cells[col + 1];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+    // Bottom
+    if(arr[row + 1] != null && arr[row + 1][col] != null && arrMark[row + 1][col] != -3) {
+      cell = table.rows[row + 1].cells[col];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+    // Bottom Left
+    if(arr[row + 1] != null && arr[row + 1][col - 1] != null && arrMark[row + 1][col - 1] != -3) {
+      cell = table.rows[row + 1].cells[col - 1];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+    // Left
+    if(arr[row] != null && arr[row][col - 1] != null && arrMark[row][col - 1] != -3) {
+      cell = table.rows[row].cells[col - 1];
+      $(cell).trigger("click");
+      if(isClear){
+        isClear = false;
+        return;
+      }
+    }
+  } else {
+    // TODO:
   }
-  // Top
-  if(arr[row - 1] != null && arr[row - 1][col] != null && (arr[row - 1][col] != -1 || arrMark[row - 1][col] != -3)) {
-    cell = table.rows[row - 1].cells[col];
-  $(cell).trigger("click");
-  }
-  // Top Right
-  if(arr[row - 1] != null && arr[row - 1][col + 1] != null && (arr[row - 1][col + 1] != -1 || arrMark[row - 1][col + 1] != -3)) {
-    cell = table.rows[row - 1].cells[col + 1];
-  $(cell).trigger("click");
-  }
-  // Right
-  if(arr[row] != null && arr[row][col + 1] != null && (arr[row][col + 1] != -1 || arrMark[row][col + 1] != -3)) {
-    cell = table.rows[row].cells[col + 1];
-  $(cell).trigger("click");
-  }
-  // Bottom Right
-  if(arr[row + 1] != null && arr[row + 1][col + 1] != null && (arr[row + 1][col + 1] != -1 || arrMark[row + 1][col + 1] != -3)) {
-    cell = table.rows[row + 1].cells[col + 1];
-	$(cell).trigger("click");
-  }
-  // Bottom
-  if(arr[row + 1] != null && arr[row + 1][col] != null && (arr[row + 1][col] != -1 || arrMark[row + 1][col] != -3)) {
-    cell = table.rows[row + 1].cells[col];
-  $(cell).trigger("click");
-  }
-  // Bottom Left
-  if(arr[row + 1] != null && arr[row + 1][col - 1] != null && (arr[row + 1][col - 1] != -1 || arrMark[row + 1][col - 1] != -3)) {
-    cell = table.rows[row + 1].cells[col - 1];
-  $(cell).trigger("click");
-  }
-  // Left
-  if(arr[row] != null && arr[row][col - 1] != null && (arr[row][col - 1] != -1 || arrMark[row][col - 1] != -3)) {
-    cell = table.rows[row].cells[col - 1];
-	$(cell).trigger("click");
-  }
- }
 });
+
 $("#minesweeper td").mousedown(function(e){
   if( e.button == 2 ) {
     // Right mouse
@@ -207,13 +245,17 @@ function initArr() {
   for (var i = 0; i < 20; i++) {
     for (var j = 0; j < 20; j++) {
       arr[i][j] = 0;
-	  if(Math.floor(Math.random() * 20) == 6 || Math.floor(Math.random() * 20) == 19 || Math.floor(Math.random() * 20) == 11) {
-		arr[i][j] = -1;
-	  }
+      if(Math.floor(Math.random() * 20) == 6 || Math.floor(Math.random() * 20) == 19 || Math.floor(Math.random() * 20) == 11) {
+        arr[i][j] = -1;
+      }
     }
     arr[i][Math.floor(Math.random() * 20)] = -1;
-	arr[i][Math.floor(Math.random() * 20)] = -1;
-    arr[i][Math.floor(Math.random() * 20)] = -1;
+    if(i % 5 == 0) {
+      arr[i][Math.floor(Math.random() * 20)] = -1;
+    }
+    if(i % 3 == 0) {
+      arr[i][Math.floor(Math.random() * 20)] = -1;
+    }
   }
   return arr;
 };
@@ -273,7 +315,7 @@ function discover(row, col) {
   arrMark[row][col] = -2;
   if (arr[row][col] != 0) {
     $cell.html(arr[row][col]);
-	return;
+    return;
   }
 
   // Top Left
@@ -328,15 +370,17 @@ function checkWin() {
       if(arrMark[i][j] == -2 || arr[i][j] == -1){
         continue;
       } else {
-        return;
+        return false;
       }
     }
   }
   alert("You win!");
   restart();
+  return true;
 }
 
 function clearContent() {
+  isClear = true;
   var table = $("#minesweeper")[0];
   for (var i = 0; i < 20; i++) {
     for (var j = 0; j < 20; j++) {
@@ -356,5 +400,6 @@ function restart() {
   flag = true;
   $("#minesweeper td").css("background", "#666");
 }
+
 window.setInterval(checkWin, 500);
 </script>
