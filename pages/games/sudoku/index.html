@@ -1,0 +1,191 @@
+---
+layout: default
+title: sudoku
+---
+<table id="sudoku">
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+  <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
+</table>
+<br>
+<p>Version 0.0.1</p>
+<!-- https://scriptographer.org/scripts/general-scripts/sudoku-generator-solver/ -->
+<style media="screen">
+#sudoku {
+  max-width: 100%;
+  table-layout:fixed;
+}
+#sudoku tr td{
+  cursor: default;
+  width: 70px;
+  height: 70px;
+  line-height: 25px;
+  display: inline-block;
+  min-width: unset;
+}
+#sudoku tr td:nth-of-type(3),
+#sudoku tr td:nth-of-type(6){
+  border-right: 2px solid #000;
+}
+#sudoku tr:nth-of-type(3) td,
+#sudoku tr:nth-of-type(6) td{
+  border-bottom: 2px solid #000;
+}
+#sudoku tr td:hover {
+  background: #c7c7c7;
+}
+#sudoku tr td:hover input[type="text"]{
+  color: #000;
+}
+#sudoku tr td input[type="text"] {
+  width: 100%;
+  line-height: 70px;
+  border: unset;
+  font-size: 50px;
+  text-align: center;
+  background: transparent;
+  color: #666;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+// Filter input
+$("#sudoku tr td input").keypress(function(event) {
+  var charCode = (event.which) ? event.which : event.keyCode;
+  if (charCode > 31 && (charCode < 49 || charCode > 57)){
+    return false;
+  }
+  console.log(String.fromCharCode(charCode));
+  return true;
+});
+});
+
+/* Sudoku Algorithm */
+var arr = init();
+var arrEasy = easyBoard(arr);
+renderBoard(arrEasy);
+
+
+
+
+
+
+
+// Initialize
+function init() {
+  var arr = new Array(9);
+  for (var i = 0; i < 9; i++) {
+    arr[i] = new Array(9);
+  }
+  for (var row = 0; row < 9; row++) {
+    for (var col = 0; col < 9; col++) {
+      arr[row][col] = (row * 3 + Math.floor(row / 3) + col) % 9 + 1;
+    }
+  }
+
+  // Swap random number
+  for(var i = 0; i < 42; i++) {
+    var n1 = Math.ceil(Math.random() * 9);
+    var n2;
+    do {
+      n2 = Math.ceil(Math.random() * 9);
+    }while(n1 == n2);
+
+    for(var row = 0; row < 9; row++) {
+      for(var col = 0; col < col; col++) {
+        if(arr[row][col] == n1) {
+          arr[row][col] = n2;
+        }
+        else if(arr[row][col] == n2) {
+          arr[row][col] = n1;
+        }
+      }
+    }
+  }
+
+  // Swap two column
+  for (var c = 0; c < 42; c++) {
+    var s1 = Math.floor(Math.random() * 3);
+    var s2 = Math.floor(Math.random() * 3);
+
+    for(var row = 0; row < 9; row++) {
+      var tmp = arr[row][s1 * 3 + c % 3]
+      arr[row][s1 * 3 + c % 3] = arr[row][s2 * 3 + c % 3];
+      arr[row][s2 * 3 + c % 3] = tmp;
+    }
+  }
+
+  // Swap column in sub
+  for (var s = 0; s < 42; s++) {
+    var c1 = Math.floor(Math.random() * 3);
+    var c2 = Math.floor(Math.random() * 3);
+
+    for(var row = 0; row < 9; row++) {
+      var tmp = arr[row][s % 3 * 3 + c1];
+      arr[row][s % 3 * 3 + c1] = arr[row][s % 3 * 3 + c2];
+      arr[row][s % 3 * 3 + c2] = tmp;
+    }
+  }
+
+  // Swap row in sub
+  for (var s = 0; s < 42; s++) {
+    var r1 = Math.floor(Math.random() * 3);
+    var r2 = Math.floor(Math.random() * 3);
+
+    for(var col = 0; col < 9; col++) {
+      var tmp = arr[s % 3 * 3 + r1][col];
+      arr[s % 3 * 3 + r1][col] = arr[s % 3 * 3 + r2][col];
+      arr[s % 3 * 3 + r2][col] = tmp;
+    }
+  }
+
+  return arr;
+}
+
+// Hide 5 cells each square
+function easyBoard(arr) {
+  var easyArr = new Array(9);
+  for (var i = 0; i < 9; i++) {
+    easyArr[i] = new Array(9);
+  }
+  for(var row = 0; row < 9; row++) {
+    for(var col = 0; col < 9; col++) {
+      easyArr[row][col] = arr[row][col];
+    }
+  }
+
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      for (var k = 0; k < 5; k++) {
+        var c;
+        do {
+          c = Math.floor(Math.random() * 9);
+        }	while(easyArr[i * 3 + Math.floor(c / 3)][j * 3 + c % 3] == 0);
+
+        easyArr[i * 3 + Math.floor(c / 3)][j * 3 + c % 3] = 0;
+      }
+    }
+  }
+
+  return easyArr;
+}
+
+function renderBoard(arr) {
+  var table = $("#sudoku")[0];
+  for(var row = 0; row < 9; row++) {
+    for(var col = 0; col < 9; col++) {
+      if(arr[row][col] == 0) {
+        continue;
+      }
+      var cell = table.rows[row].cells[col];
+      $(cell).children("input").val(arr[row][col]).attr('readonly', true).css("background-color", "#666");
+    }
+  }
+}
+</script>
