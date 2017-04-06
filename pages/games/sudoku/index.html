@@ -14,7 +14,7 @@ title: sudoku
   <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
 </table>
 <br>
-<p>Version 0.0.3</p>
+<p>Version 0.0.4</p>
 <style media="screen">
 #sudoku {
   max-width: 100%;
@@ -22,9 +22,9 @@ title: sudoku
 }
 #sudoku tr td{
   cursor: default;
-  width: 70px;
-  height: 70px;
-  line-height: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 20px;
   display: inline-block;
   min-width: unset;
 }
@@ -44,7 +44,7 @@ title: sudoku
 }
 #sudoku tr td input[type="text"] {
   width: 100%;
-  line-height: 70px;
+  line-height: 50px;
   border: unset;
   font-size: 50px;
   text-align: center;
@@ -60,6 +60,10 @@ $("#sudoku tr td input").keypress(function(event) {
   if (charCode > 31 && (charCode < 49 || charCode > 57)){
     return false;
   }
+  var col = $(this).parent().parent().children().index($(this).parent());
+  var row = $(this).parent().parent().parent().children().index($(this).parent().parent());
+  arrEasy[row][col] = parseInt(String.fromCharCode(charCode));
+
   isSolve();
   return true;
 });
@@ -196,8 +200,8 @@ function isRowCorrect() {
   for (var row = 0; row < 9; row++) {
     var oneToNine = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (var col = 0; col < 9; col++) {
-      if(oneToNine.indexOf(arr[row][col]) != -1) {
-        oneToNine[oneToNine.indexOf(arr[row][col])] = 0
+      if(oneToNine.indexOf(arrEasy[row][col]) != -1) {
+        oneToNine[oneToNine.indexOf(arrEasy[row][col])] = 0
       } else {
         return false;
       }
@@ -211,8 +215,8 @@ function isColumnCorrect() {
   for (var col = 0; col < 9; col++) {
     var oneToNine = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (var row = 0; row < 9; row++) {
-      if(oneToNine.indexOf(arr[row][col]) != -1) {
-        oneToNine[oneToNine.indexOf(arr[row][col])] = 0
+      if(oneToNine.indexOf(arrEasy[row][col]) != -1) {
+        oneToNine[oneToNine.indexOf(arrEasy[row][col])] = -1
       } else {
         return false;
       }
@@ -226,10 +230,12 @@ function isSquareCorrect() {
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
       var oneToNine = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      for(var row = i * 3; row < row + 3; row++) {
-        for(var col = j * 3; col < col + 3; col++) {
-          if(oneToNine.indexOf(arr[row][col]) != -1) {
-            oneToNine[oneToNine.indexOf(arr[row][col])] = 0
+      var x = i * 3 + 3;
+      var y = j * 3 + 3;
+      for(var row = i * 3; row < x; row++) {
+        for(var col = j * 3; col < y; col++) {
+          if(oneToNine.indexOf(arrEasy[row][col]) != -1) {
+            oneToNine[oneToNine.indexOf(arrEasy[row][col])] = 0
           } else {
             return false;
           }
