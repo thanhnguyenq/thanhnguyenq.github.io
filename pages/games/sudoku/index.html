@@ -14,7 +14,7 @@ title: sudoku
   <tr><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td></tr>
 </table>
 <br>
-<p>Version 0.0.2</p>
+<p>Version 0.0.3</p>
 <style media="screen">
 #sudoku {
   max-width: 100%;
@@ -180,11 +180,12 @@ function renderBoard(arr) {
   var table = $("#sudoku")[0];
   for(var row = 0; row < 9; row++) {
     for(var col = 0; col < 9; col++) {
+      var cell = table.rows[row].cells[col];
       if(arr[row][col] == 0) {
+        $(cell).children("input").val("").attr('disabled', false);
         continue;
       }
-      var cell = table.rows[row].cells[col];
-      $(cell).children("input").val(arr[row][col]).attr('readonly', true).css("background-color", "#666");
+      $(cell).children("input").val(arr[row][col]).attr('disabled', true);
     }
   }
 }
