@@ -11,3 +11,5 @@ allpost: "https://thanhnguyenq.github.io/allpost.json"
 # gems:
 #   - jekyll-paginate
 tagURL : "/pages/blog/tag/?tag="
+
+analytics: UA-97001426-1
